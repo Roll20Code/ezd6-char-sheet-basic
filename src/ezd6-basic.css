@@ -4,16 +4,12 @@
     justify-content: center;
     align-items: center;
 
-    width: 100%;
+    width: 830px;
     height: 444px;
-    
+
     background-size: 830px 444px;
     background-size: 100%;
     background-repeat: no-repeat;
-}
-
-.sheet-inner-container {
-    border: 1px dotted red;
 }
 
 .sheet-background-1 {
@@ -68,10 +64,6 @@
     background-size: 100% 100%;
 }
 
-.sheet-border {
-    border: 1px solid red;
-}
-
 .sheet-flex-row {
     display: flex;
     align-items: center;
@@ -81,8 +73,6 @@
 .sheet-flex-col {
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
-    /* justify-content: center; */
 }
 
 .sheet-flex-dir-row {
@@ -101,22 +91,19 @@
 .sheet-input-field>label {
     color: #000000;
     white-space: nowrap;
-    /* min-width: 72px; */
 }
 
 .sheet-input-field>input,
 select {
-    /* min-width: 196px; */
+    min-width: 200px;
     margin: 0 !important;
 }
 
 .sheet-flex-row.sheet-flex-centered {
     justify-content: center;
-    /* align-items: center; */
 }
 
 .sheet-flex-col.sheet-flex-centered {
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -136,9 +123,8 @@ select {
 }
 
 input.sheet-single-digit {
-    width: 32px;
-    height: 32px;
-    /* text-align: center; */
+    width: 24px !important;
+    height: 24px !important;
 }
 
 input::-webkit-outer-spin-button,
@@ -156,11 +142,12 @@ input {
 }
 
 textarea {
-    width: 200px !important;
-    height: 96px !important;
+    width: 100% !important;
+    height: 72px !important;
     resize: none !important;
     padding: 2px;
-    /* margin: 0; */
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .sheet-button-section button {
@@ -200,7 +187,6 @@ label {
     flex-grow: 1;
     font-size: 0.9rem;
     color: #000000;
-    /* white-space: nowrap; */
     line-height: 1rem;
     margin: 0;
     padding: 0;
