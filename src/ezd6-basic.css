@@ -1,17 +1,63 @@
-.sheet-container {
+.sheet-outer-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* font-size: 1rem; */
+
+    width: 100%;
+    height: 444px;
+    
+    background-size: 830px 444px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.sheet-inner-container {
+    border: 1px dotted red;
+}
+
+.sheet-background-1 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.1.png');
+}
+
+.sheet-background-2 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.2.png');
+}
+
+.sheet-background-3 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.3.png');
+}
+
+.sheet-background-4 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.4.png');
+}
+
+.sheet-background-5 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.5.png');
+}
+
+.sheet-background-6 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.6.png');
+}
+
+.sheet-background-7 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.7.png');
+}
+
+.sheet-background-8 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.8.png');
+}
+
+.sheet-background-9 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/backgrounds/830x444.9.png');
 }
 
 .sheet-gap-h {
-    gap: 8px;
+    gap: 4px;
 }
 
 .sheet-gap-v {
-    gap: 8px;
+    gap: 4px;
 }
 
 .sheet-ezd6-logo {
@@ -60,7 +106,7 @@
 
 .sheet-input-field>input,
 select {
-    min-width: 196px;
+    /* min-width: 196px; */
     margin: 0 !important;
 }
 
@@ -113,6 +159,8 @@ textarea {
     width: 200px !important;
     height: 96px !important;
     resize: none !important;
+    padding: 2px;
+    /* margin: 0; */
 }
 
 .sheet-button-section button {
@@ -142,6 +190,10 @@ button.sheet-die {
     padding: 4px;
     border-radius: 4px;
     border: 1px solid gray;
+}
+
+label {
+    padding: 0 !important;
 }
 
 .sheet-attr-group label {

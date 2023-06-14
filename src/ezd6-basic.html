@@ -1,11 +1,149 @@
 <link rel="stylesheet" href="ezd6-basic.css" />
 
-<div class="sheet-container">
+<div class="sheet-outer-container sheet-background-1">
     <input type="hidden" name="attr_buttonToggle" value="sheet-flex-dir-reverse" />
 
-    <div class="inner-sheet-container sheet-flex-row sheet-gap-h ${buttonToggle}">
+    <div class="sheet-inner-container sheet-flex-row sheet-gap-h ${buttonToggle}">
+        <!-- Character Sheet -->
+        <div class="sheet-flex-col sheet-gap-v" style="border: 1px solid black;">
+            <div class="sheet-flex-row sheet-gap-h" style="justify-content: space-between;">
+                <!-- <div class="sheet-ezd6-logo"></div> -->
+
+                <div class="sheet-flex-col sheet-border-group">
+                    <div class="sheet-input-field">
+                        <label for="character_name">Name:</label>
+                        <input id="character_name" type="text" name="attr_character_name" />
+                    </div>
+
+                    <div class="sheet-input-field">
+                        <label for="species">Species:</label>
+                        <input id="species" type="text" name="attr_character_species" />
+                    </div>
+
+                    <div class="sheet-input-field">
+                        <label for="path">Hero Path:</label>
+                        <input id="path" type="text" name="attr_character_hero_path" />
+                    </div>
+                </div>
+
+                <div class="sheet-flex-col sheet-border-group">
+                    <div class="sheet-flex-row sheet-flex-dir-row sheet-flex-centered sheet-gap-h">
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="health" style="text-align: center;">Health:</label>
+                            <input id="health" class="sheet-single-digit" type="number" name="attr_character_health" />
+                        </div>
+
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="karma" style="text-align: center;">Karma:</label>
+                            <input id="karma" class="sheet-single-digit" type="number" name="attr_character_karma" />
+                        </div>
+
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="armor_save" style="text-align: center;"> Armor Save:</label>
+                            <input id="armor_save" class="sheet-single-digit" type="number" name="attr_armor_save" />
+                        </div>
+
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="hero_die" style="text-align: center;">Hero Die:</label>
+                            <input id="hero_die" class="sheet-single-digit" type="number" name="attr_hero_die" />
+                        </div>
+
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="miraculous_save" style="text-align: center;">Miraculous Save:</label>
+                            <input id="miraculous_save" class="sheet-single-digit" type="number"
+                                name="attr_miraculous_save" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sheet-flex-row sheet-flex-dir-row sheet-gap-h">
+                <!-- <div class="sheet-flex-row"
+                    style="justify-content: space-between; padding: 4px; border-radius: 4px; border: 1px solid gray;">
+                    <div class="sheet-flex-col sheet-flex-centered">
+                        <label for="armor" style="text-align: center;">Armor:</label>
+                        <input id="Armor" type="text" name="attr_armor" />
+                    </div>
+
+                    <div class="sheet-flex-col sheet-flex-centered">
+                        <label for="armor_save" style="text-align: center;"> Armor Save:</label>
+                        <input id="armor_save" class="sheet-single-digit" type="number" name="attr_armor_save" />
+                    </div>
+                </div> -->
+                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
+                    <label for="hero_path_features">Hero Path Features:</label>
+                    <textarea id="hero_path_features" name="attr_character_hero_path_features" rows="4"
+                        cols="100"></textarea>
+                </div>
+
+                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
+                    <label>Aspects:</label>
+                    <input type="text" name="attr_character_aspect_1" />
+                    <input type="text" name="attr_character_aspect_2" />
+                </div>
+
+                <!-- <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
+                    <label for="magic">Magic:</label>
+                    <textarea id="magic" name="attr_character_magic" rows="4" cols="100"></textarea>
+                </div> -->
+            </div>
+
+            <!-- <div class="sheet-flex-row sheet-flex-dir-row sheet-gap-h"> -->
+
+            <!-- <div class="sheet-flex-col sheet-flex-centered">
+                    <label for="inclinations">Inclinations:</label>
+                    <textarea id="inclinations" name="attr_character_inclinations" rows="4" cols="100"></textarea>
+                </div>
+
+                <div class="sheet-flex-col sheet-flex-centered">
+                    <label for="hero_path_features">Hero Path Features:</label>
+                    <textarea id="hero_path_features" name="attr_character_hero_path_features" rows="4"
+                        cols="100"></textarea>
+                </div> -->
+            <!-- </div> -->
+
+            <div class="sheet-flex-row sheet-flex-dir-row sheet-gap-h">
+                <div class="sheet-flex-col sheet-flex-centered">
+                    <label for="inclinations">Inclinations:</label>
+                    <textarea id="inclinations" name="attr_character_inclinations" rows="4" cols="100"></textarea>
+                </div>
+
+                <!-- <div class="sheet-flex-col sheet-flex-centered">
+                    <label for="hero_path_features">Hero Path Features:</label>
+                    <textarea id="hero_path_features" name="attr_character_hero_path_features" rows="4"
+                        cols="100"></textarea>
+                </div> -->
+
+                <div class="sheet-flex-col sheet-flex-centered">
+                    <label for="magick" title="Sorcery Circle(s), etc.">Magick:</label>
+                    <textarea id="magick" name="attr_character_magick" rows="4" cols="100"></textarea>
+                </div>
+
+                <div class="sheet-flex-col sheet-flex-centered">
+                    <label for="equipment" title="Wealth, Weapons, Armor, Gear, etc.">Equipment:</label>
+                    <textarea id="equipment" name="attr_character_equipment" rows="4" cols="100"></textarea>
+                </div>
+
+                <!-- <div class="sheet-flex-col sheet-flex-centered">
+                    <label for="weapons">Weapons:</label>
+                    <textarea id="weapons" name="attr_character_weapons" rows="4" cols="100"></textarea>
+                </div> -->
+
+                <!-- <div class="sheet-flex-col sheet-flex-centered">
+                    <label for="additional_details">Additional Details:</label>
+                    <textarea id="additional_details" name="attr_character_additional_details" rows="4"
+                        cols="100"></textarea>
+                </div> -->
+            </div>
+        </div>
+
         <!-- Buttons -->
-        <div class="sheet-flex-col sheet-flex-space-around-col sheet-button-section sheet-gap-v" style="height: 100%;">
+        <div class="sheet-flex-col sheet-flex-space-around-col sheet-button-section sheet-gap-v"
+            style="border: 1px solid black;">
+            <div class="sheet-flex-row sheet-flex-centered">
+                <div class="sheet-ezd6-logo"></div>
+            </div>
+
             <div class="sheet-flex-col sheet-border-group">
                 <button type="roll" name="roll_d6" value="/roll 1d6!k1">Action</button>
                 <div class="sheet-flex-row" style="width: 100%;">
@@ -51,130 +189,60 @@
             <div class="sheet-flex-col sheet-border-group">
                 <span>Options:</span>
                 <button type="action" name="act_buttonToggle" style="white-space: nowrap;">Buttons Location</button>
-            </div>
-        </div>
-
-        <!-- Character Sheet -->
-        <div class="sheet-flex-col sheet-gap-v">
-            <div class="sheet-flex-row sheet-gap-h" style="justify-content: space-around;">
-                <div class="sheet-ezd6-logo"></div>
-
-                <div class="sheet-flex-col sheet-border-group">
-                    <div class="sheet-input-field">
-                        <label for="character_name">Name:</label>
-                        <input id="character_name" type="text" name="attr_character_name" />
-                    </div>
-
-                    <div class="sheet-input-field">
-                        <label for="species">Species:</label>
-                        <input id="species" type="text" name="attr_character_species" />
-                    </div>
-                </div>
-
-                <div class="sheet-flex-col sheet-border-group">
-                    <div class="sheet-input-field">
-                        <label for="path">Hero Path:</label>
-                        <input id="path" type="text" name="attr_character_hero_path" />
-                    </div>
-
-                    <div class="sheet-input-field">
-                        <label for="wealth">Wealth:</label>
-                        <select id="wealth" name="attr_character_wealth">
-                            <option>Pauper</option>
-                            <option>Cash Poor</option>
-                            <option>Moderate</option>
-                            <option>Wealthy</option>
-                            <option>Lordly Wealth</option>
-                            <option>Kingly Wealth</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sheet-flex-row sheet-flex-dir-row sheet-flex-centered sheet-gap-h">
-                <div class="sheet-flex-row sheet-flex-dir-row sheet-flex-centered sheet-gap-h">
-                    <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                        <label for="health" style="text-align: center;">Health:</label>
-                        <input id="health" class="sheet-single-digit" type="number" name="attr_character_health" />
-                    </div>
-    
-                    <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                        <label for="karma" style="text-align: center;">Karma:</label>
-                        <input id="karma" class="sheet-single-digit" type="number" name="attr_character_karma" />
-                    </div>
-    
-                    <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                        <label for="hero_die" style="text-align: center;">Hero Die:</label>
-                        <input id="hero_die" class="sheet-single-digit" type="number" name="attr_hero_die" />
-                    </div>
-    
-                    <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                        <label for="miraculous_save" style="text-align: center;">Miraculous Save:</label>
-                        <input id="miraculous_save" class="sheet-single-digit" type="number" name="attr_miraculous_save" />
-                    </div>
-                </div>
-
-                <div class="sheet-flex-row" style="justify-content: space-between; padding: 4px; border-radius: 4px; border: 1px solid gray;">
-                    <div class="sheet-flex-col sheet-flex-centered">
-                        <label for="armor" style="text-align: center;">Armor:</label>
-                        <input id="Armor" type="text" name="attr_armor" />
-                    </div>
-
-                    <div class="sheet-flex-col sheet-flex-centered">
-                        <label for="armor_save" style="text-align: center;">Save:</label>
-                        <input id="armor_save" class="sheet-single-digit" type="number" name="attr_armor_save" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="sheet-flex-row sheet-flex-dir-row sheet-flex-space-around-row">
-                <div class="sheet-flex-col sheet-flex-centered">
-                    <label for="aspects">Aspects:</label>
-                    <textarea id="aspects" name="attr_character_aspects" rows="4" cols="100"></textarea>
-                </div>
-
-                <div class="sheet-flex-col sheet-flex-centered">
-                    <label for="inclinations">Inclinations:</label>
-                    <textarea id="inclinations" name="attr_character_inclinations" rows="4" cols="100"></textarea>
-                </div>
-
-                <div class="sheet-flex-col sheet-flex-centered">
-                    <label for="hero_path_features">Hero Path Features:</label>
-                    <textarea id="hero_path_features" name="attr_character_hero_path_features" rows="4"
-                        cols="100"></textarea>
-                </div>
-            </div>
-
-            <div class="sheet-flex-row sheet-flex-dir-row sheet-flex-space-around-row">
-                <div class="sheet-flex-col sheet-flex-centered">
-                    <label for="equipment">Equipment:</label>
-                    <textarea id="equipment" name="attr_character_equipment" rows="4" cols="100"></textarea>
-                </div>
-
-                <div class="sheet-flex-col sheet-flex-centered">
-                    <label for="weapons">Weapons:</label>
-                    <textarea id="weapons" name="attr_character_weapons" rows="4" cols="100"></textarea>
-                </div>
-
-                <div class="sheet-flex-col sheet-flex-centered">
-                    <label for="additional_details">Additional Details:</label>
-                    <textarea id="additional_details" name="attr_character_additional_details" rows="4"
-                        cols="100"></textarea>
-                </div>
+                <select name="attr_backgroundImage" style="width: 100%;">
+                    <option value="sheet-background-1">Background 1</option>
+                    <option value="sheet-background-2">Background 2</option>
+                    <option value="sheet-background-3">Background 3</option>
+                    <option value="sheet-background-4">Background 4</option>
+                    <option value="sheet-background-5">Background 5</option>
+                    <option value="sheet-background-6">Background 6</option>
+                    <option value="sheet-background-7">Background 7</option>
+                    <option value="sheet-background-8">Background 8</option>
+                    <option value="sheet-background-9">Background 9</option>
+                </select>
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/worker">
-    const innerContainer = $20('div.inner-sheet-container');
-    
+    const outerContainer = $20('div.sheet-outer-container');
+    const innerContainer = $20('div.sheet-inner-container');
+
+    const backgroundImageClasses = [
+        'none',
+        'sheet-background-1',
+        'sheet-background-2',
+        'sheet-background-3',
+        'sheet-background-4',
+        'sheet-background-5',
+        'sheet-background-6',
+        'sheet-background-7',
+        'sheet-background-8',
+        'sheet-background-9',
+    ];
+
+    const clearBackgroundImage = () =>
+        backgroundImageClasses.forEach((imageClass) => {
+            if (imageClass != 'none') {
+                outerContainer.removeClass(imageClass);
+            }
+        });
+
     on('sheet:opened', () => {
-        getAttrs(['buttonToggle'], (data) => {
+        getAttrs(['buttonToggle', 'backgroundImage'], (data) => {
+            console.log('*** sheet:opened: data:', data);
+
             innerContainer.removeClass('sheet-flex-dir-reverse');
 
             if (data.buttonToggle === 'sheet-flex-dir-reverse') {
                 innerContainer.addClass('sheet-flex-dir-reverse');
+            }
+
+            clearBackgroundImage();
+
+            if (data.backgroundImage != 'none') {
+                //outerContainer.addClass(data.backgroundImage);
             }
         });
     });
@@ -189,5 +257,10 @@
                 innerContainer.addClass('sheet-flex-dir-reverse');
             }
         });
+    });
+
+    on('change:backgroundImage', (evt) => {
+        //outerContainer.removeClass(evt.previousValue);
+        //outerContainer.addClass(evt.newValue);
     });
 </script>
