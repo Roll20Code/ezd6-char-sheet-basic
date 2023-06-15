@@ -5,10 +5,8 @@
     align-items: center;
 
     width: 830px;
-    /* height: 380px; */
     height: 444px;
 
-    /* background-size: 830px 380px; */
     background-size: 830px 444px;
     background-repeat: no-repeat;
 
@@ -17,12 +15,26 @@
 }
 
 .sheet-inner-container {
-    margin-left: 42px;
+    margin-left: -2px;
+    width: 802px;
+    height: 412px;
+    background-size: 802px 412px;
+    background-repeat: no-repeat;
+}
+
+.sheet-character-sheet {
+    width: 802px;
+    height: 412px;
 }
 
 .sheet-flex-dir-reverse {
     margin-left: -38px !important;
     flex-direction: row-reverse;
+}
+
+.sheet-border-line {
+    border-radius: 8px;
+    border: 1px solid #000;
 }
 
 .sheet-border-1 {
@@ -61,6 +73,30 @@
     background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/border_9.png');
 }
 
+.sheet-background-1 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/background_1.png');
+}
+
+.sheet-background-2 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/background_2.png');
+}
+
+.sheet-background-3 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/background_3.png');
+}
+
+.sheet-background-4 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/background_4.png');
+}
+
+.sheet-background-5 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/background_5.png');
+}
+
+.sheet-background-6 {
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/background_6.png');
+}
+
 .sheet-gap-h {
     gap: 4px;
 }
@@ -72,7 +108,7 @@
 .sheet-ezd6-logo {
     width: 48px;
     height: 48px;
-    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/ezd6_logo_bw.png');
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/ezd6_logo_bw.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -100,7 +136,6 @@
 
 label {
     color: #000000;
-    /* white-space: nowrap; */
     margin: 0 !important;
 }
 
