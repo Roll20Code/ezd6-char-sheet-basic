@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="ezd6-basic.css" />
 
-<div class="sheet-outer-container sheet-background-1">
+<div class="sheet-outer-container sheet-border-1">
     <input type="hidden" name="attr_buttonToggle" value="sheet-flex-dir-reverse" />
 
-    <div class="sheet-inner-container sheet-flex-row sheet-gap-h ${buttonToggle}" style="width: 100%; padding: 4px;">
+    <div class="sheet-inner-container sheet-flex-row sheet-gap-h ${buttonToggle}">
         <!-- Character Sheet -->
-        <div class="sheet-flex-col sheet-gap-v" style="width: 100%;">
+        <div class="sheet-flex-col sheet-gap-v">
             <div class="sheet-flex-row sheet-gap-h">
                 <!-- Name, Species, etc. -->
                 <div class="sheet-flex-col sheet-border-group">
@@ -109,7 +109,7 @@
 
             <div class="sheet-flex-col sheet-border-group">
                 <button type="roll" name="roll_d6" value="/roll 1d6!k1">Action</button>
-                <div class="sheet-flex-row" style="width: 100%;">
+                <div class="sheet-flex-row">
                     <button type="roll" name="roll_d6" value="/roll 2d6!k1">w/Boon</button>
                     <button type="roll" name="roll_d6" value="/roll 2d6!kl1">w/Bane</button>
                 </div>
@@ -150,18 +150,17 @@
             </div>
 
             <div class="sheet-flex-col sheet-border-group">
-                <span>Options:</span>
                 <button type="action" name="act_buttonToggle" style="white-space: nowrap;">Buttons Location</button>
-                <select name="attr_backgroundImage" style="width: 100%;">
-                    <option value="sheet-background-1">Background 1</option>
-                    <option value="sheet-background-2">Background 2</option>
-                    <option value="sheet-background-3">Background 3</option>
-                    <option value="sheet-background-4">Background 4</option>
-                    <option value="sheet-background-5">Background 5</option>
-                    <option value="sheet-background-6">Background 6</option>
-                    <option value="sheet-background-7">Background 7</option>
-                    <option value="sheet-background-8">Background 8</option>
-                    <option value="sheet-background-9">Background 9</option>
+                <select name="attr_borderImage" style="width: 172px !important;">
+                    <option value="sheet-border-1">Background 1</option>
+                    <option value="sheet-border-2">Background 2</option>
+                    <option value="sheet-border-3">Background 3</option>
+                    <option value="sheet-border-4">Background 4</option>
+                    <option value="sheet-border-5">Background 5</option>
+                    <option value="sheet-border-6">Background 6</option>
+                    <option value="sheet-border-7">Background 7</option>
+                    <option value="sheet-border-8">Background 8</option>
+                    <option value="sheet-border-9">Background 9</option>
                 </select>
             </div>
         </div>
@@ -172,28 +171,28 @@
     const outerContainer = $20('div.sheet-outer-container');
     const innerContainer = $20('div.sheet-inner-container');
 
-    const backgroundImageClasses = [
+    const borderImageClasses = [
         'none',
-        'sheet-background-1',
-        'sheet-background-2',
-        'sheet-background-3',
-        'sheet-background-4',
-        'sheet-background-5',
-        'sheet-background-6',
-        'sheet-background-7',
-        'sheet-background-8',
-        'sheet-background-9',
+        'sheet-border-1',
+        'sheet-border-2',
+        'sheet-border-3',
+        'sheet-border-4',
+        'sheet-border-5',
+        'sheet-border-6',
+        'sheet-border-7',
+        'sheet-border-8',
+        'sheet-border-9',
     ];
 
     const clearBackgroundImage = () =>
-        backgroundImageClasses.forEach((imageClass) => {
+        borderImageClasses.forEach((imageClass) => {
             if (imageClass != 'none') {
                 outerContainer.removeClass(imageClass);
             }
         });
 
     on('sheet:opened', () => {
-        getAttrs(['buttonToggle', 'backgroundImage'], (data) => {
+        getAttrs(['buttonToggle', 'borderImage'], (data) => {
             console.log('*** sheet:opened: data:', data);
 
             innerContainer.removeClass('sheet-flex-dir-reverse');
@@ -204,8 +203,8 @@
 
             clearBackgroundImage();
 
-            if (data.backgroundImage != 'none') {
-                //outerContainer.addClass(data.backgroundImage);
+            if (data.borderImage != 'none') {
+                outerContainer.addClass(data.borderImage);
             }
         });
     });
@@ -222,8 +221,8 @@
         });
     });
 
-    on('change:backgroundImage', (evt) => {
-        //outerContainer.removeClass(evt.previousValue);
-        //outerContainer.addClass(evt.newValue);
+    on('change:borderImage', (evt) => {
+        outerContainer.removeClass(evt.previousValue);
+        outerContainer.addClass(evt.newValue);
     });
 </script>
