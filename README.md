@@ -1,1 +1,1 @@
-# ezd6-char-sheet-basic
+# ezd6-core-sheet
