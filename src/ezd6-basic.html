@@ -4,7 +4,7 @@
     <div class="sheet-inner-container sheet-flex-col sheet-col-gap">
         <div class="sheet-flex-row sheet-flex-centered">
             <div class="sheet-ezd6-logo"></div>
-            <h3>Core Character Sheet</h3>
+            <h3>Core Sheet</h3>
             <input type="hidden" name="attr_buttonToggle" value="" />
         </div>
 
@@ -101,44 +101,60 @@
 
             <div class="sheet-flex-col sheet-col-gap sheet-button-section">
                 <div class="sheet-flex-col sheet-border-group">
-                    <button type="roll" name="roll_d6" value="/roll 1d6!k1">Action</button>
+                    <button type="roll" name="roll_action"
+                        value="&{template:action} {{name=Action}} {{Roll=[[1d6!k1]]}}">Action</button>
+
                     <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button type="roll" name="roll_d6" value="/roll 2d6!k1">w/Boon</button>
-                        <button type="roll" name="roll_d6" value="/roll 2d6!kl1">w/Bane</button>
+                        <button type="roll" name="roll_actionBoon"
+                            value="&{template:action} {{name=Action w/Boon}} {{Roll=[[2d6!kh1]]}}">w/Boon</button>
+                        <button type="roll" name="roll_actionBane"
+                            value="&{template:action} {{name=Action w/Bane}} {{Roll=[[2d6!kl1]]}}">w/Bane</button>
                     </div>
                 </div>
 
                 <div class="sheet-flex-col sheet-border-group">
-                    <button type="roll" name="roll_d6" value="/roll 1d6!k1">Attack</button>
+                    <button type="action" name="act_attack">Attack</button>
+
                     <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button type="roll" name="roll_d6" value="/roll 2d6!k1">w/Boon</button>
-                        <button type="roll" name="roll_d6" value="/roll 2d6!kl1">w/Bane</button>
+                        <button type="action" name="act_attackBoon">w/Boon</button>
+                        <button type="roll" name="roll_attackWBane"
+                            value="&{template:attack} {{name=Attack w/Bane}} {{Roll=[[2d6!kl1]]}}">w/Bane</button>
                     </div>
                 </div>
 
                 <div class="sheet-flex-col sheet-col-gap sheet-border-group">
                     <div class="sheet-flex-row sheet-row-gap">
-                        <button type="roll" name="roll_d6" value="/roll 1d6" class="sheet-die">1d6</button>
-                        <button type="roll" name="roll_d6X" value="/roll 1d6!k1" class="sheet-die">1d6!</button>
-
-                        <button type="roll" name="roll_2d6" value="/roll 2d6k1" class="sheet-die">2d6</button>
-                        <button type="roll" name="roll_2d6X" value="/roll 2d6!k1" class="sheet-die">2d6!</button>
+                        <button type="roll" name="roll_d6" value="&{template:action} {{name=1D6}} {{Roll=[[1d6]]}}"
+                            class="sheet-die">1d6</button>
+                        <button type="roll" name="roll_d6X" value="&{template:action} {{name=1D6!}} {{Roll=[[1d6!]]}}"
+                            class="sheet-die">1d6!</button>
+                        <button type="roll" name="roll_2d6" value="&{template:action} {{name=2D6}} {{Roll=[[2d6k1]]}}"
+                            class="sheet-die">2d6</button>
+                        <button type="roll" name="roll_2d6X"
+                            value="&{template:action} {{name=2D6!}} {{Roll=[[2d6!k1]]}}" class="sheet-die">2d6!</button>
                     </div>
 
                     <div class="sheet-flex-row sheet-row-gap">
-                        <button type="roll" name="roll_3d6" value="/roll 3d6k1" class="sheet-die">3d6</button>
-                        <button type="roll" name="roll_3d6X" value="/roll 3d6!k1" class="sheet-die">3d6!</button>
-
-                        <button type="roll" name="roll_4d6" value="/roll 4d6k1" class="sheet-die">4d6</button>
-                        <button type="roll" name="roll_4d6X" value="/roll 4d6!k1" class="sheet-die">4d6!</button>
+                        <button type="roll" name="roll_3d6" value="&{template:action} {{name=3D6}} {{Roll=[[3d6k1]]}}"
+                            class="sheet-die">3d6</button>
+                        <button type="roll" name="roll_3d6X"
+                            value="&{template:action} {{name=3D6!}} {{Roll=[[3d6!k1]]}}" class="sheet-die">3d6!</button>
+                        <button type="roll" name="roll_4d6" value="&{template:action} {{name=4D6}} {{Roll=[[4d6k1]]}}"
+                            class="sheet-die">4d6</button>
+                        <button type="roll" name="roll_4d6X"
+                            value="&{template:action} {{name=4D6!}} {{Roll=[[4d6!k1]]}}" class="sheet-die">4d6!</button>
                     </div>
 
                     <div class="sheet-flex-row sheet-row-gap">
-                        <button type="roll" name="roll_5d6" value="/roll 5d6k1" class="sheet-die">5d6</button>
-                        <button type="roll" name="roll_5d6X" value="/roll 5d6!k1" class="sheet-die">5d6!</button>
-
-                        <button type="roll" name="roll_6d6" value="/roll 6d6k1" class="sheet-die">6d6</button>
-                        <button type="roll" name="roll_6d6X" value="/roll 6d6!k1" class="sheet-die">6d6!</button>
+                        <button type="roll" name="roll_5d6" value="&{template:action} {{name=5D6}} {{Roll=[[5d6k1]]}}"
+                            class="sheet-die">5d6</button>
+                        <button type="roll" name="roll_5d6X"
+                            value="&{template:action} {{name=5D6!}} {{Roll=[[5d6!k1]]}}" class="sheet-die">5d6!</button>
+                        <button type="roll" name="roll_6d6" value="&{template:action} {{name=6D6}} {{Roll=[[6d6k1]]}}"
+                            class="sheet-die">6d6</button>
+                        <button type="roll" name="roll_6d6X"
+                            value="&{template:action} {{name=6D6!}} {{Roll=[[6d6!k1cs>2]]}}"
+                            class="sheet-die">6d6!</button>
                     </div>
                 </div>
 
@@ -168,6 +184,14 @@
     </div>
 </div>
 
+<rolltemplate class="sheet-rolltemplate-action">
+    <h3>{{name}}: {{Roll}}</h3>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-attack">
+    <h3>{{name}}: {{computed::Roll}}</h3>
+</rolltemplate>
+
 <script type="text/worker">
     const outerContainer = $20('div.sheet-outer-container');
     const innerContainer = $20('div.sheet-inner-container');
@@ -187,10 +211,34 @@
         'sheet-background-9',
     ]
 
-    const clearBackgroundImage = () =>
-        backgroundImageClasses.forEach((imageClass) => {
-            outerContainer.removeClass(imageClass);
-        });
+    const clearBackgroundImage = () => backgroundImageClasses.forEach((imageClass) => {
+        outerContainer.removeClass(imageClass);
+    });
+
+    const rollAttack = (boon = false) => startRoll(
+        `&{template:attack} {{name=Attack${boon ? ' w/Boon' : ''}}} {{Roll=[[${boon ? 2 : 1}d6!kh1]]}}`,
+        (roll) => {
+            const dice = [...roll.results.Roll.dice];
+            const count = dice.length;
+            
+            const native = [];
+            const additional = [];
+
+            while (dice.length > 0) {
+                let current = dice.shift();
+                native.push(current);
+
+                while (current === 6 && dice.length > 0) {
+                    current = dice.shift();
+                    additional.push(current);
+                }
+            }
+            
+            native.sort((a, b) => (b - a));
+            
+            finishRoll(roll.rollId, { Roll: [native[0], ...additional] });
+        }
+    );
 
     on('sheet:opened', () => {
         getAttrs(['buttonToggle', 'borderImage', 'backgroundImage'], (data) => {
@@ -204,6 +252,9 @@
             outerContainer.addClass(data.backgroundImage);
         });
     });
+
+    on('clicked:attackBoon', () => rollAttack(true));
+    on('clicked:attack', () => rollAttack());
 
     on('clicked:buttonToggle', () => {
         getAttrs(['buttonToggle'], (data) => {
