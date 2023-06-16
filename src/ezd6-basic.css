@@ -22,12 +22,16 @@
     display: flex;
     align-items: center;
     width: 100%;
-    margin-left: -4px;
 }
 
-.sheet-flex-dir-reverse {
+.sheet-button-orientation-left {
     margin-left: 4px !important;
     flex-direction: row-reverse;
+}
+
+.sheet-button-orientation-right {
+    margin-left: -4px !important;
+    flex-direction: row;
 }
 
 .sheet-border-line {

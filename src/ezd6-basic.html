@@ -5,10 +5,9 @@
         <div class="sheet-flex-row sheet-flex-centered">
             <div class="sheet-ezd6-logo"></div>
             <h3>Core Sheet</h3>
-            <input type="hidden" name="attr_buttonToggle" value="" />
         </div>
 
-        <div class="sheet-character-sheet sheet-row-gap ${buttonToggle}">
+        <div class="sheet-character-sheet sheet-row-gap ${buttonOrientation}">
             <div class="sheet-flex-col sheet-col-gap">
                 <div class="sheet-flex-col sheet-border-group">
                     <div class="sheet-input-field">
@@ -161,14 +160,15 @@
                 <div class="sheet-flex-col sheet-border-group sheet-col-gap">
                     <label>Sheet Options:</label>
 
-                    <button type="action" name="act_buttonToggle" style="white-space: nowrap;">
-                        Buttons Location
-                    </button>
+                    <select name="attr_buttonOrientation" style="width: 172px !important;">
+                        <option value="sheet-button-orientation-left">Buttons Left</option>
+                        <option value="sheet-button-orientation-right">Buttons Right</option>
+                    </select>
 
                     <select name="attr_backgroundImage" style="width: 172px !important;">
                         <option value="">No Background</option>
                         <option value="sheet-border-line">Border</option>
-                        <option value="sheet-background-1" selected="selected">Background 1</option>
+                        <option value="sheet-background-1">Background 1</option>
                         <option value="sheet-background-2">Background 2</option>
                         <option value="sheet-background-3">Background 3</option>
                         <option value="sheet-background-4">Background 4</option>
@@ -197,6 +197,11 @@
     const innerContainer = $20('div.sheet-inner-container');
     const characterSheet = $20('div.sheet-character-sheet');
 
+    const buttonOrientations = [
+        'sheet-button-orientation-left',
+        'sheet-button-orientation-right'
+    ];
+
     const backgroundImageClasses = [
         '',
         'sheet-border-line',
@@ -213,6 +218,10 @@
 
     const clearBackgroundImage = () => backgroundImageClasses.forEach((imageClass) => {
         outerContainer.removeClass(imageClass);
+    });
+
+    const clearButtonOrientation = () => buttonOrientations.forEach((orientationClass) => {
+        characterSheet.removeClass(orientationClass);
     });
 
     const rollAttack = (boon = false) => startRoll(
@@ -241,12 +250,9 @@
     );
 
     on('sheet:opened', () => {
-        getAttrs(['buttonToggle', 'borderImage', 'backgroundImage'], (data) => {
-            characterSheet.removeClass('sheet-flex-dir-reverse');
-
-            if (data.buttonToggle === 'sheet-flex-dir-reverse') {
-                characterSheet.addClass('sheet-flex-dir-reverse');
-            }
+        getAttrs(['buttonOrientation', 'backgroundImage'], (data) => {
+            clearButtonOrientation();
+            characterSheet.addClass(data.buttonOrientation);
 
             clearBackgroundImage();
             outerContainer.addClass(data.backgroundImage);
@@ -256,22 +262,15 @@
     on('clicked:attackBoon', () => rollAttack(true));
     on('clicked:attack', () => rollAttack());
 
-    on('clicked:buttonToggle', () => {
-        getAttrs(['buttonToggle'], (data) => {
-            if (data.buttonToggle === 'sheet-flex-dir-reverse') {
-                setAttrs({ buttonToggle: ' ' });
-                characterSheet.removeClass('sheet-flex-dir-reverse');
-            } else {
-                setAttrs({ buttonToggle: 'sheet-flex-dir-reverse' });
-                characterSheet.addClass('sheet-flex-dir-reverse');
-            }
-        });
+    on('change:buttonOrientation', (evt) => {
+        const { previousValue, newValue } = evt;
+        
+        characterSheet.removeClass(previousValue);
+        characterSheet.addClass(newValue);
     });
 
     on('change:backgroundImage', (evt) => {
         const { previousValue, newValue } = evt;
-
-        console.debug({previousValue, newValue});
 
         outerContainer.removeClass(previousValue);
         outerContainer.addClass(newValue);
