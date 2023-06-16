@@ -219,3 +219,44 @@ label {
     margin: 0;
     padding: 0;
 }
+
+.help-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.help-modal>div {
+    width: 600px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    /* background-color: rgba(255, 255, 255, 1); */
+    background-repeat: no-repeat;
+    background-size: 600px 400px;
+    background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-char-sheet-basic/main/src/art/background_1.png');
+}
+
+.help-modal>div>div {
+    width: 570px;
+    height: 370px;
+    padding: 8px;
+    font-size: 1.4em;
+    line-height: 1em;
+}
+
+.help-body {
+    max-height: 312px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
