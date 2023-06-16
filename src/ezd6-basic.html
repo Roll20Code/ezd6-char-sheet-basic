@@ -112,10 +112,15 @@
                 </div>
 
                 <div class="sheet-flex-col sheet-border-group">
-                    <button type="action" name="act_attack">Attack</button>
+                    <button type="roll" name="roll_attack" value="@{attack_action}">Attack</button>
+                    <button type="action" name="act_attack-action" class="hidden"></button>
+                    <input type="hidden" name="attr_attack_action" value="">
 
                     <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button type="action" name="act_attackBoon">w/Boon</button>
+                        <button type="roll" name="roll_attack-boon" value="@{attack_boon_action}">w/Boon</button>
+                        <button type="action" name="act_attack-boon-action" class="hidden"></button>
+                        <input type="hidden" name="attr_attack_boon_action" value="">
+
                         <button type="roll" name="roll_attackWBane"
                             value="&{template:attack} {{name=Attack w/Bane}} {{Roll=[[2d6!kl1]]}}">w/Bane</button>
                     </div>
@@ -194,7 +199,6 @@
 
 <script type="text/worker">
     const outerContainer = $20('div.sheet-outer-container');
-    const innerContainer = $20('div.sheet-inner-container');
     const characterSheet = $20('div.sheet-character-sheet');
 
     const buttonOrientations = [
@@ -249,6 +253,17 @@
         }
     );
 
+    on('sheet:opened change:character_name', (evt) => {
+        getAttrs(['character_name', 'attack_action', 'attack_boon_action'], (data) => {
+            var attrsToChange = {};
+
+            attrsToChange["attack_action"] = "%{" + data["character_name"] + "|attack-action}";
+            attrsToChange["attack_boon_action"] = "%{" + data["character_name"] + "|attack-boon-action}";
+            
+            setAttrs(attrsToChange);
+        });
+    });
+
     on('sheet:opened', () => {
         getAttrs(['buttonOrientation', 'backgroundImage'], (data) => {
             clearButtonOrientation();
@@ -259,8 +274,9 @@
         });
     });
 
-    on('clicked:attackBoon', () => rollAttack(true));
-    on('clicked:attack', () => rollAttack());
+    on('clicked:attack-action', () => rollAttack());
+
+    on('clicked:attack-boon-action', () => rollAttack(true));
 
     on('change:buttonOrientation', (evt) => {
         const { previousValue, newValue } = evt;
