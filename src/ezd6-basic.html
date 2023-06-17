@@ -267,6 +267,10 @@
                                             <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6! and returns
                                                 the single lowest die.</li>
                                         </ul>
+                                        <p>
+                                            Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1 and 6
+                                            Banes or Boons for your roll.
+                                        </p>
                                     </div>
 
                                     <div class="sheet-border-group">
@@ -287,6 +291,10 @@
                                             <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6! and returns
                                                 all potential strike dice.</li>
                                         </ul>
+                                        <p>
+                                            Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1 and 6
+                                            Banes or Boons for your roll.
+                                        </p>
                                     </div>
 
                                     <div class="sheet-border-group">
@@ -383,10 +391,10 @@
         QueryBane: 4,
     };
 
+    const rqBoons = '?{Number of Boons|1|2|3|4|5|6}';
+    const rqBanes = '?{Number of Banes|1|2|3|4|5|6}';
+    
     const rollAttack = (rollOption = RollOption.Default) => {
-        const rqBoons = '?{Number of Boons|1|2|3|4|5|6}';
-        const rqBanes = '?{Number of Banes|1|2|3|4|5|6}';
-
         // RollOption.DefaultAttack
         let rollString = `&{template:attack} {{name=Attack}} {{Roll=[[1d6!kh1]]}}`;
 
@@ -461,7 +469,7 @@
         let rollString = `&{template:action} {{name=Action w/Boon}} {{Roll=[[2d6!kh1]]}}`;
 
         if (evt.shiftKey) {
-            rollString = `&{template:action} {{name=Action w/Boon(s)}} {{Roll=[[(1+?{Number of Boons|1|2|3|4|5|6})d6!kh1]]}}`;
+            rollString = `&{template:action} {{name=Action w/Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
         }
 
         startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
@@ -471,7 +479,7 @@
         let rollString = `&{template:action} {{name=Action w/Bane}} {{Roll=[[2d6!kl1]]}}`;
 
         if (evt.shiftKey) {
-            rollString = `&{template:action} {{name=Action w/Bane(s)}} {{Roll=[[(1+?{Number of Banes|1|2|3|4|5|6})d6!kl1]]}}`;
+            rollString = `&{template:action} {{name=Action w/Bane(s)}} {{Roll=[[(1+${rqBanes})d6!kl1]]}}`;
         }
 
         startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
