@@ -228,6 +228,14 @@ label {
     padding: 0;
 }
 
+button.help-toggle {
+    font-family: 'Pictos Three';
+    font-size: 2em;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-decoration: none;
+}
+
 .help-modal {
     position: absolute;
     top: 0;

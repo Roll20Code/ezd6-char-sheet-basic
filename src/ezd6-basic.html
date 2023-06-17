@@ -2,9 +2,156 @@
 
 <div class="sheet-outer-container">
     <div class="sheet-inner-container sheet-flex-col sheet-col-gap">
-        <div class="sheet-flex-row sheet-flex-centered">
-            <div class="sheet-ezd6-logo"></div>
-            <h3>Core Sheet</h3>
+        <div class="sheet-flex-row sheet-row-gap sheet-flex-centered">
+            <div class="sheet-flex-row sheet-row-gap sheet-flex-centered" style="flex-grow: 1;">
+                <div class="sheet-ezd6-logo"></div>
+                <h3>Core Sheet</h3>
+            </div>
+
+            <button class="help-toggle" type="action" name="act_help-open">
+                <span style="font-family: 'Pictos'">?</span>
+            </button>
+        </div>
+
+        <div class="help-modal hidden">
+            <div class="sheet-flex-col sheet-col-gap ${backgroundImage}">
+                <div>
+                    <div class="sheet-flex-row sheet-flex-centered" style="margin-bottom: 4px;">
+                        <div class="sheet-flex-row">
+                            <div class="sheet-ezd6-logo"></div>
+                            <h3>Core Sheet: Help</h3>
+                        </div>
+
+                        <button type="action" name="act_help-close">Close</button>
+                    </div>
+
+                    <div class="help-body">
+                        <div class="sheet-border-group">
+                            <h4>Welcome!</h4>
+                            <p>
+                                Some titles have a tooltip that will appear when you hover your mouse over
+                                them.
+                            </p>
+
+                            <p>
+                                Dice Notation: 1d6 means, roll 1 six-sided die. When you see an exclaimation
+                                point, like 1d6!, this means that the die will "explode", which means you
+                                get an additional die rolled.
+
+                                However, in all rolls (except Attack) for EZD6, only the highest die is
+                                displayed and used. You can hover your mouse cursor over the result to see
+                                all the dice rolls.
+                            </p>
+
+                            <p>
+                            <h5>Sheet Options:</h5>
+
+                            <select name="attr_buttonOrientation" style="width: 172px !important;">
+                                <option value="sheet-button-orientation-left">Buttons Left</option>
+                                <option value="sheet-button-orientation-right">Buttons Right</option>
+                            </select>
+
+                            <select name="attr_backgroundImage" style="width: 172px !important;">
+                                <option value="">No Background</option>
+                                <option value="sheet-border-line">Border</option>
+                                <option value="sheet-background-1">Background 1</option>
+                                <option value="sheet-background-2">Background 2</option>
+                                <option value="sheet-background-3">Background 3</option>
+                                <option value="sheet-background-4">Background 4</option>
+                                <option value="sheet-background-5">Background 5</option>
+                                <option value="sheet-background-6">Background 6</option>
+                                <option value="sheet-background-7">Background 7</option>
+                                <option value="sheet-background-8">Background 8</option>
+                                <option value="sheet-background-9">Background 9</option>
+                            </select>
+                            </p>
+                        </div>
+
+                        <div class="sheet-border-group">
+                            <h4>Action, w/Boon, w/Bane Buttons:</h4>
+                            <p>
+                                An action is anything you want to do that is not Combat or Magick. If you
+                                want to climb a tree, influence an NPC, etc.
+                            </p>
+                            <ul>
+                                <li><span style="font-weight: bold;">Action</span>: Rolls 1D6! and returns
+                                    the single highest die.</li>
+                                <li><span style="font-weight: bold;">w/Boon</span>: Rolls 2D6! and returns
+                                    the single highest die.</li>
+                                <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6 and returns
+                                    the single lowest die.</li>
+                            </ul>
+                            <p>
+                                Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1
+                                and 6 Banes or Boons for your roll.
+                            </p>
+                        </div>
+
+                        <div class="sheet-border-group">
+                            <h4>Attack, w/Boon, w/Bane Buttons:</h4>
+                            <p>
+                                An attack is simply attacking an enemy or NPC. The roll results are a little
+                                different than an action. The results of the row will show multiple dice if
+                                any of them happened to explode. All of the dice displayed for an attack
+                                roll are potential strikes, depending on the die value and the armor of the
+                                target.
+                            </p>
+                            <ul>
+                                <li><span style="font-weight: bold;">Attack</span>: Rolls 1D6! (! =
+                                    exploding) and returns all potential strike dice.</li>
+                                <li><span style="font-weight: bold;">w/Boon</span>: Rolls 2D6! and returns
+                                    all potential strike dice.</li>
+                                <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6 and returns
+                                    all potential strike dice.</li>
+                            </ul>
+                            <p>
+                                Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1
+                                and 6 Banes or Boons for your roll.
+                            </p>
+                        </div>
+
+                        <div class="sheet-border-group">
+                            <h4>D6, D6!, 2D6, 2D6!, 3D6, 3D6!, 4D6, 4D6!, 5D6, 5D6!, 6D6, 6D6! Buttons:</h4>
+                            <p>These are just plain rolls that use the default result of Roll20.</p>
+                        </div>
+
+                        <div class="sheet-border-group">
+                            <h4>Buttons Right/Left Dropdown:</h4>
+                            <p>
+                                This lets you configure which side the "Buttons" column is positioned, left
+                                or right side of the sheet.
+                            </p>
+                        </div>
+
+                        <div class="sheet-border-group">
+                            <h4>Background Dropdown:</h4>
+                            <p>This lets you configure the sheet background. Possible options are:</p>
+                            <ul>
+                                <li><span style="font-weight: bold;">No Background</span>: No background
+                                    images or borders.</li>
+                                <li><span style="font-weight: bold;">Border</span>: Just a clean border, no
+                                    background image.</li>
+                                <li><span style="font-weight: bold;">Background (1-9)</span>: Any of 9
+                                    beautiful background images by Mathew Halstead.</li>
+                            </ul>
+                        </div>
+
+                        <div class="sheet-border-group">
+                            <h4>Credits:</h4>
+                            <p>
+                                First, let's thank DM_Scotty for creating one of the best TT RPGs available
+                                today!
+                            </p>
+                            <ul>
+                                <li><span style="font-weight: bold;">John Wakley</span>: Code and Design.
+                                </li>
+                                <li><span style="font-weight: bold;">Mathew Halstead</span>: Art and Design.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="sheet-character-sheet sheet-row-gap ${buttonOrientation}">
@@ -192,149 +339,6 @@
                             <button type="roll" name="roll_6d6X"
                                 value="&{template:action} {{name=6D6!}} {{Roll=[[6d6!k1cs>2]]}}"
                                 class="sheet-die">6D6!</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sheet-flex-col sheet-border-group sheet-col-gap">
-                    <label>Sheet Options:</label>
-
-                    <select name="attr_buttonOrientation" style="width: 172px !important;">
-                        <option value="sheet-button-orientation-left">Buttons Left</option>
-                        <option value="sheet-button-orientation-right">Buttons Right</option>
-                    </select>
-
-                    <select name="attr_backgroundImage" style="width: 172px !important;">
-                        <option value="">No Background</option>
-                        <option value="sheet-border-line">Border</option>
-                        <option value="sheet-background-1">Background 1</option>
-                        <option value="sheet-background-2">Background 2</option>
-                        <option value="sheet-background-3">Background 3</option>
-                        <option value="sheet-background-4">Background 4</option>
-                        <option value="sheet-background-5">Background 5</option>
-                        <option value="sheet-background-6">Background 6</option>
-                        <option value="sheet-background-7">Background 7</option>
-                        <option value="sheet-background-8">Background 8</option>
-                        <option value="sheet-background-9">Background 9</option>
-                    </select>
-
-                    <button type="action" name="act_help-open">Help</button>
-
-                    <div class="help-modal hidden">
-                        <div class="sheet-flex-col sheet-col-gap ${backgroundImage}">
-                            <div>
-                                <div class="sheet-flex-row sheet-flex-centered" style="margin-bottom: 4px;">
-                                    <div class="sheet-flex-row">
-                                        <div class="sheet-ezd6-logo"></div>
-                                        <h3>Core Sheet: Help</h3>
-                                    </div>
-
-                                    <button type="action" name="act_help-close">Close</button>
-                                </div>
-
-                                <div class="help-body">
-                                    <div class="sheet-border-group">
-                                        <h4>Welcome!</h4>
-                                        <p>
-                                            Some titles have a tooltip that will appear when you hover your mouse over
-                                            them.
-                                        </p>
-
-                                        <p>
-                                            Dice Notation: 1d6 means, roll 1 six-sided die. When you see an exclaimation
-                                            point, like 1d6!, this means that the die will "explode", which means you
-                                            get an additional die rolled.
-
-                                            However, in all rolls (except Attack) for EZD6, only the highest die is
-                                            displayed and used. You can hover your mouse cursor over the result to see
-                                            all the dice rolls.
-                                        </p>
-                                    </div>
-
-                                    <div class="sheet-border-group">
-                                        <h4>Action, w/Boon, w/Bane Buttons:</h4>
-                                        <p>
-                                            An action is anything you want to do that is not Combat or Magick. If you
-                                            want to climb a tree, influence an NPC, etc.
-                                        </p>
-                                        <ul>
-                                            <li><span style="font-weight: bold;">Action</span>: Rolls 1D6! and returns
-                                                the single highest die.</li>
-                                            <li><span style="font-weight: bold;">w/Boon</span>: Rolls 2D6! and returns
-                                                the single highest die.</li>
-                                            <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6 and returns
-                                                the single lowest die.</li>
-                                        </ul>
-                                        <p>
-                                            Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1
-                                            and 6 Banes or Boons for your roll.
-                                        </p>
-                                    </div>
-
-                                    <div class="sheet-border-group">
-                                        <h4>Attack, w/Boon, w/Bane Buttons:</h4>
-                                        <p>
-                                            An attack is simply attacking an enemy or NPC. The roll results are a little
-                                            different than an action. The results of the row will show multiple dice if
-                                            any of them happened to explode. All of the dice displayed for an attack
-                                            roll are potential strikes, depending on the die value and the armor of the
-                                            target.
-                                        </p>
-                                        <ul>
-                                            <li><span style="font-weight: bold;">Attack</span>: Rolls 1D6! (! =
-                                                exploding) and returns all potential strike dice.</li>
-                                            <li><span style="font-weight: bold;">w/Boon</span>: Rolls 2D6! and returns
-                                                all potential strike dice.</li>
-                                            <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6 and returns
-                                                all potential strike dice.</li>
-                                        </ul>
-                                        <p>
-                                            Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1
-                                            and 6 Banes or Boons for your roll.
-                                        </p>
-                                    </div>
-
-                                    <div class="sheet-border-group">
-                                        <h4>D6, D6!, 2D6, 2D6!, 3D6, 3D6!, 4D6, 4D6!, 5D6, 5D6!, 6D6, 6D6! Buttons:</h4>
-                                        <p>These are just plain rolls that use the default result of Roll20.</p>
-                                    </div>
-
-                                    <div class="sheet-border-group">
-                                        <h4>Buttons Right/Left Dropdown:</h4>
-                                        <p>
-                                            This lets you configure which side the "Buttons" column is positioned, left
-                                            or right side of the sheet.
-                                        </p>
-                                    </div>
-
-                                    <div class="sheet-border-group">
-                                        <h4>Background Dropdown:</h4>
-                                        <p>This lets you configure the sheet background. Possible options are:</p>
-                                        <ul>
-                                            <li><span style="font-weight: bold;">No Background</span>: No background
-                                                images or borders.</li>
-                                            <li><span style="font-weight: bold;">Border</span>: Just a clean border, no
-                                                background image.</li>
-                                            <li><span style="font-weight: bold;">Background (1-9)</span>: Any of 9
-                                                beautiful background images by Mathew Halstead.</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="sheet-border-group">
-                                        <h4>Credits:</h4>
-                                        <p>
-                                            First, let's thank DM_Scotty for creating one of the best TT RPGs available
-                                            today!
-                                        </p>
-                                        <ul>
-                                            <li><span style="font-weight: bold;">John Wakley</span>: Code and Design.
-                                            </li>
-                                            <li><span style="font-weight: bold;">Mathew Halstead</span>: Art and Design.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
