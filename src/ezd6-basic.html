@@ -242,14 +242,12 @@
 
                                         <p>
                                             Dice Notation: 1d6 means, roll 1 six-sided die. When you see an exclaimation
-                                            point,
-                                            like 1d6!, this means that the die will "explode", which means you get an
-                                            additional
-                                            die rolled.
+                                            point, like 1d6!, this means that the die will "explode", which means you
+                                            get an additional die rolled.
 
                                             However, in all rolls (except Attack) for EZD6, only the highest die is
-                                            displayed and used.
-                                            You can hover your mouse cursor over the result to see all the dice rolls.
+                                            displayed and used. You can hover your mouse cursor over the result to see
+                                            all the dice rolls.
                                         </p>
                                     </div>
 
@@ -260,16 +258,16 @@
                                             want to climb a tree, influence an NPC, etc.
                                         </p>
                                         <ul>
-                                            <li><span style="font-weight: bold;">Action</span>: Rolls 1D6! (! =
-                                                exploding) and returns the single highest die.</li>
+                                            <li><span style="font-weight: bold;">Action</span>: Rolls 1D6! and returns
+                                                the single highest die.</li>
                                             <li><span style="font-weight: bold;">w/Boon</span>: Rolls 2D6! and returns
                                                 the single highest die.</li>
-                                            <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6! and returns
+                                            <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6 and returns
                                                 the single lowest die.</li>
                                         </ul>
                                         <p>
-                                            Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1 and 6
-                                            Banes or Boons for your roll.
+                                            Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1
+                                            and 6 Banes or Boons for your roll.
                                         </p>
                                     </div>
 
@@ -278,22 +276,21 @@
                                         <p>
                                             An attack is simply attacking an enemy or NPC. The roll results are a little
                                             different than an action. The results of the row will show multiple dice if
-                                            any
-                                            of them happened to explode. All of the dice displayed for an attack roll
-                                            are
-                                            potential strikes, depending on the die value and the armor of the target.
+                                            any of them happened to explode. All of the dice displayed for an attack
+                                            roll are potential strikes, depending on the die value and the armor of the
+                                            target.
                                         </p>
                                         <ul>
                                             <li><span style="font-weight: bold;">Attack</span>: Rolls 1D6! (! =
                                                 exploding) and returns all potential strike dice.</li>
                                             <li><span style="font-weight: bold;">w/Boon</span>: Rolls 2D6! and returns
                                                 all potential strike dice.</li>
-                                            <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6! and returns
+                                            <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6 and returns
                                                 all potential strike dice.</li>
                                         </ul>
                                         <p>
-                                            Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1 and 6
-                                            Banes or Boons for your roll.
+                                            Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1
+                                            and 6 Banes or Boons for your roll.
                                         </p>
                                     </div>
 
@@ -348,7 +345,7 @@
     <h3>{{name}}: {{Roll}}</h3>
 </rolltemplate>
 
-<rolltemplate class="sheet-rolltemplate-attack">
+<rolltemplate class="sheet-rolltemplate-computed">
     <h3>{{name}}: {{computed::Roll}}</h3>
 </rolltemplate>
 
@@ -395,21 +392,21 @@
     const rqBanes = '?{Number of Banes|1|2|3|4|5|6}';
     
     const rollAttack = (rollOption = RollOption.Default) => {
-        // RollOption.DefaultAttack
-        let rollString = `&{template:attack} {{name=Attack}} {{Roll=[[1d6!kh1]]}}`;
+        // RollOption.DefaultAttack:
+        let rollString = `&{template:computed} {{name=Attack}} {{Roll=[[1d6!kh1]]}}`;
 
         switch (rollOption) {
             case RollOption.DefaultBoon:
-                rollString = `&{template:attack} {{name=Attack w/Boon}} {{Roll=[[2d6!kh1]]}}`;
+                rollString = `&{template:computed} {{name=Attack, 1 Boon}} {{Roll=[[2d6!kh1]]}}`;
                 break;
             case RollOption.DefaultBane:
-                rollString = `&{template:attack} {{name=Attack w/Bane}} {{Roll=[[2d6!kl1]]}}`;
+                rollString = `&{template:computed} {{name=Attack, 1 Bane}} {{Roll=[[2d6kl1]]}}`;
                 break;
             case RollOption.QueryBoon:
-                rollString = `&{template:attack} ${rqBoons} {{name=Attack w/Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
+                rollString = `&{template:computed} {{name=Attack, ${rqBoons} Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
                 break;
             case RollOption.QueryBane:
-                rollString = `&{template:attack} ${rqBanes} {{name=Attack w/Bane(s)}} {{Roll=[[(1+${rqBanes})d6!kl1]]}}`;
+                rollString = `&{template:computed} {{name=Attack, ${rqBanes} Bane(s)}} {{Roll=[[(1+${rqBanes})d6kl1]]}}`;
                 break;
             default: break;
         }
@@ -466,20 +463,20 @@
     });
 
     $20('button.action-boon').on('click', async (evt) => {
-        let rollString = `&{template:action} {{name=Action w/Boon}} {{Roll=[[2d6!kh1]]}}`;
+        let rollString = `&{template:action} {{name=Action, 1 Boon}} {{Roll=[[2d6!kh1]]}}`;
 
         if (evt.shiftKey) {
-            rollString = `&{template:action} {{name=Action w/Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
+            rollString = `&{template:action} {{name=Action, ${rqBoons} Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
         }
 
         startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
     });
 
     $20('button.action-bane').on('click', async (evt) => {
-        let rollString = `&{template:action} {{name=Action w/Bane}} {{Roll=[[2d6!kl1]]}}`;
+        let rollString = `&{template:action} {{name=Action, 1Bane}} {{Roll=[[2d6kl1]]}}`;
 
         if (evt.shiftKey) {
-            rollString = `&{template:action} {{name=Action w/Bane(s)}} {{Roll=[[(1+${rqBanes})d6!kl1]]}}`;
+            rollString = `&{template:action} {{name=Action, ${rqBanes} Bane(s)}} {{Roll=[[(1+${rqBanes})d6kl1]]}}`;
         }
 
         startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
