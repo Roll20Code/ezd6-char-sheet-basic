@@ -118,12 +118,15 @@
                     <input type="hidden" name="attr_attack_action" value="">
 
                     <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button type="roll" name="roll_attack-boon" value="@{attack_boon_action}">w/Boon</button>
+                        <button class="attack-boon" type="roll" name="roll_attack-boon"
+                            value="@{attack_boon_action}">w/Boon</button>
                         <button type="action" name="act_attack-boon-action" class="hidden"></button>
                         <input type="hidden" name="attr_attack_boon_action" value="">
 
-                        <button type="roll" name="roll_attackWBane"
-                            value="&{template:attack} {{name=Attack w/Bane}} {{Roll=[[2d6!kl1]]}}">w/Bane</button>
+                        <button class="attack-bane" type="roll" name="roll_attack-bane"
+                            value="@{attack_bane_action}">w/Bane</button>
+                        <button type="action" name="act_attack-bane-action" class="hidden"></button>
+                        <input type="hidden" name="attr_attack_bane_action" value="">
                     </div>
                 </div>
 
@@ -367,9 +370,41 @@
         characterSheet.removeClass(orientationClass);
     });
 
-    const rollAttack = (boon = false) => startRoll(
-        `&{template:attack} {{name=Attack${boon ? ' w/Boon' : ''}}} {{Roll=[[${boon ? 2 : 1}d6!kh1]]}}`,
+    const AttackRollOption = {
+        DefaultAttack: 0,
+        DefaultBoon: 1,
+        QueryBoon: 2,
+        DefaultBane: 3,
+        QueryBane: 4,
+    };
+
+    const rollAttack = (rollOption = AttackRollOption.DefaultAttack) => {
+        const rqBoons = '?{Number of Boons|1|2|3|4|5|6}';
+        const rqBanes = '?{Number of Banes|1|2|3|4|5|6}';
+
+        // RollOption.DefaultAttack
+        let rollString = `&{template:attack} {{name=Attack}} {{Roll=[[1d6!kh1]]}}`;
+
+        switch (rollOption) {
+            case AttackRollOption.DefaultBoon:
+                rollString = `&{template:attack} {{name=Attack w/Boon}} {{Roll=[[2d6!kh1]]}}`;
+                break;
+            case AttackRollOption.DefaultBane:
+                rollString = `&{template:attack} {{name=Attack w/Bane}} {{Roll=[[2d6!kl1]]}}`;
+                break;
+            case AttackRollOption.QueryBoon:
+                rollString = `&{template:attack} ${rqBoons} {{name=Attack w/Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
+                break;
+            case AttackRollOption.QueryBane:
+                rollString = `&{template:attack} ${rqBanes} {{name=Attack w/Bane(s)}} {{Roll=[[(1+${rqBanes})d6!kl1]]}}`;
+                break;
+            default: break;
+        }
+
+        startRoll(
+            rollString,
         (roll) => {
+                if (rollOption < 3) {
             const dice = [...roll.results.Roll.dice];
             const count = dice.length;
             
@@ -389,8 +424,12 @@
             native.sort((a, b) => (b - a));
             
             finishRoll(roll.rollId, { Roll: [native[0], ...additional] });
+                } else {
+                    finishRoll(roll.rollId, { Roll: roll.results.Roll.result });
+                }
         }
     );
+    };
 
     on('sheet:opened change:character_name', (evt) => {
         getAttrs(['character_name', 'attack_action', 'attack_boon_action'], (data) => {
@@ -415,7 +454,13 @@
 
     on('clicked:attack-action', () => rollAttack());
 
-    on('clicked:attack-boon-action', () => rollAttack(true));
+    $20('button.attack-boon').on('click', async (evt) => rollAttack(
+        evt.shiftKey ? AttackRollOption.QueryBoon : AttackRollOption.DefaultBoon
+    ));
+
+    $20('button.attack-bane').on('click', async (evt) => rollAttack(
+        evt.shiftKey ? AttackRollOption.QueryBane : AttackRollOption.DefaultBane
+    ));
 
     on('change:buttonOrientation', (evt) => {
         const { previousValue, newValue } = evt;
