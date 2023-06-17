@@ -16,6 +16,12 @@
     margin-top: -24px !important;
 }
 
+.sheet-outer-container * {
+    color: #000;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+}
+
 .sheet-inner-container {
     width: 800px;
     height: 410px;
