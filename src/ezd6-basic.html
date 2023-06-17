@@ -444,11 +444,21 @@
     };
 
     on('sheet:opened change:character_name', (evt) => {
-        getAttrs(['character_name', 'attack_action', 'attack_boon_action'], (data) => {
+        getAttrs([
+            'character_name',
+            'attack_action',
+            'attack_boon_action',
+            'attack_bane_action',
+            'action_boon_action',
+            'action_bane_action',
+        ], (data) => {
             var attrsToChange = {};
 
-            attrsToChange["attack_action"] = "%{" + data["character_name"] + "|attack-action}";
-            attrsToChange["attack_boon_action"] = "%{" + data["character_name"] + "|attack-boon-action}";
+            attrsToChange["attack_action"] = `%{${data["character_name"]}|attack-action}`;
+            attrsToChange["attack_boon_action"] = `%{${data["character_name"]}|attack-boon-action}`;
+            attrsToChange["attack_bane_action"] = `%{${data["character_name"]}|attack-bane-action}`;
+            attrsToChange["action_boon_action"] = `%{${data["character_name"]}|action-boon-action}`;
+            attrsToChange["action_bane_action"] = `%{${data["character_name"]}|action-bane-action}`;
 
             setAttrs(attrsToChange);
         });
