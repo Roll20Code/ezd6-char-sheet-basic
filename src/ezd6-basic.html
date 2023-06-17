@@ -370,15 +370,15 @@
         characterSheet.removeClass(orientationClass);
     });
 
-    const AttackRollOption = {
-        DefaultAttack: 0,
+    const RollOption = {
+        Default: 0,
         DefaultBoon: 1,
         QueryBoon: 2,
         DefaultBane: 3,
         QueryBane: 4,
     };
 
-    const rollAttack = (rollOption = AttackRollOption.DefaultAttack) => {
+    const rollAttack = (rollOption = RollOption.Default) => {
         const rqBoons = '?{Number of Boons|1|2|3|4|5|6}';
         const rqBanes = '?{Number of Banes|1|2|3|4|5|6}';
 
@@ -386,16 +386,16 @@
         let rollString = `&{template:attack} {{name=Attack}} {{Roll=[[1d6!kh1]]}}`;
 
         switch (rollOption) {
-            case AttackRollOption.DefaultBoon:
+            case RollOption.DefaultBoon:
                 rollString = `&{template:attack} {{name=Attack w/Boon}} {{Roll=[[2d6!kh1]]}}`;
                 break;
-            case AttackRollOption.DefaultBane:
+            case RollOption.DefaultBane:
                 rollString = `&{template:attack} {{name=Attack w/Bane}} {{Roll=[[2d6!kl1]]}}`;
                 break;
-            case AttackRollOption.QueryBoon:
+            case RollOption.QueryBoon:
                 rollString = `&{template:attack} ${rqBoons} {{name=Attack w/Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
                 break;
-            case AttackRollOption.QueryBane:
+            case RollOption.QueryBane:
                 rollString = `&{template:attack} ${rqBanes} {{name=Attack w/Bane(s)}} {{Roll=[[(1+${rqBanes})d6!kl1]]}}`;
                 break;
             default: break;
@@ -455,11 +455,11 @@
     on('clicked:attack-action', () => rollAttack());
 
     $20('button.attack-boon').on('click', async (evt) => rollAttack(
-        evt.shiftKey ? AttackRollOption.QueryBoon : AttackRollOption.DefaultBoon
+        evt.shiftKey ? RollOption.QueryBoon : RollOption.DefaultBoon
     ));
 
     $20('button.attack-bane').on('click', async (evt) => rollAttack(
-        evt.shiftKey ? AttackRollOption.QueryBane : AttackRollOption.DefaultBane
+        evt.shiftKey ? RollOption.QueryBane : RollOption.DefaultBane
     ));
 
     on('change:buttonOrientation', (evt) => {
