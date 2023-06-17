@@ -264,7 +264,7 @@ label {
 }
 
 .help-body {
-    max-height: 312px;
+    max-height: 332px;
     overflow: hidden;
     overflow-y: scroll;
 }
