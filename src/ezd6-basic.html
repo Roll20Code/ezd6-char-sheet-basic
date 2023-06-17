@@ -105,10 +105,15 @@
                         value="&{template:action} {{name=Action}} {{Roll=[[1d6!k1]]}}">Action</button>
 
                     <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button type="roll" name="roll_actionBoon"
-                            value="&{template:action} {{name=Action w/Boon}} {{Roll=[[2d6!kh1]]}}">w/Boon</button>
-                        <button type="roll" name="roll_actionBane"
-                            value="&{template:action} {{name=Action w/Bane}} {{Roll=[[2d6!kl1]]}}">w/Bane</button>
+                        <button class="action-boon" type="roll" name="roll_action-boon"
+                            value="@{action_boon_action}">w/Boon</button>
+                        <button type="action" name="act_action-boon-action" class="hidden"></button>
+                        <input type="hidden" name="attr_action_boon_action" value="">
+
+                        <button class="action-bane" type="roll" name="roll_action-bane"
+                            value="@{action_bane_action}">w/Bane</button>
+                        <button type="action" name="act_action-bane-action" class="hidden"></button>
+                        <input type="hidden" name="attr_action_bane_action" value="">
                     </div>
                 </div>
 
@@ -403,32 +408,32 @@
 
         startRoll(
             rollString,
-        (roll) => {
+            (roll) => {
                 if (rollOption < 3) {
-            const dice = [...roll.results.Roll.dice];
-            const count = dice.length;
-            
-            const native = [];
-            const additional = [];
+                    const dice = [...roll.results.Roll.dice];
+                    const count = dice.length;
 
-            while (dice.length > 0) {
-                let current = dice.shift();
-                native.push(current);
+                    const native = [];
+                    const additional = [];
 
-                while (current === 6 && dice.length > 0) {
-                    current = dice.shift();
-                    additional.push(current);
-                }
-            }
-            
-            native.sort((a, b) => (b - a));
-            
-            finishRoll(roll.rollId, { Roll: [native[0], ...additional] });
+                    while (dice.length > 0) {
+                        let current = dice.shift();
+                        native.push(current);
+
+                        while (current === 6 && dice.length > 0) {
+                            current = dice.shift();
+                            additional.push(current);
+                        }
+                    }
+
+                    native.sort((a, b) => (b - a));
+
+                    finishRoll(roll.rollId, { Roll: [native[0], ...additional] });
                 } else {
                     finishRoll(roll.rollId, { Roll: roll.results.Roll.result });
                 }
-        }
-    );
+            }
+        );
     };
 
     on('sheet:opened change:character_name', (evt) => {
@@ -437,7 +442,7 @@
 
             attrsToChange["attack_action"] = "%{" + data["character_name"] + "|attack-action}";
             attrsToChange["attack_boon_action"] = "%{" + data["character_name"] + "|attack-boon-action}";
-            
+
             setAttrs(attrsToChange);
         });
     });
@@ -452,6 +457,26 @@
         });
     });
 
+    $20('button.action-boon').on('click', async (evt) => {
+        let rollString = `&{template:action} {{name=Action w/Boon}} {{Roll=[[2d6!kh1]]}}`;
+
+        if (evt.shiftKey) {
+            rollString = `&{template:action} {{name=Action w/Boon(s)}} {{Roll=[[(1+?{Number of Boons|1|2|3|4|5|6})d6!kh1]]}}`;
+        }
+
+        startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
+    });
+
+    $20('button.action-bane').on('click', async (evt) => {
+        let rollString = `&{template:action} {{name=Action w/Bane}} {{Roll=[[2d6!kl1]]}}`;
+
+        if (evt.shiftKey) {
+            rollString = `&{template:action} {{name=Action w/Bane(s)}} {{Roll=[[(1+?{Number of Banes|1|2|3|4|5|6})d6!kl1]]}}`;
+        }
+
+        startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
+    });
+
     on('clicked:attack-action', () => rollAttack());
 
     $20('button.attack-boon').on('click', async (evt) => rollAttack(
@@ -464,7 +489,7 @@
 
     on('change:buttonOrientation', (evt) => {
         const { previousValue, newValue } = evt;
-        
+
         characterSheet.removeClass(previousValue);
         characterSheet.addClass(newValue);
     });
