@@ -9,7 +9,7 @@
             </div>
 
             <button class="help-toggle" type="action" name="act_help-open">
-                <span style="font-family: 'Pictos'">?</span>
+                <span class="icon">?</span>
             </button>
         </div>
 
@@ -22,7 +22,10 @@
                             <h3>Core Sheet: Help</h3>
                         </div>
 
-                        <button type="action" name="act_help-close">Close</button>
+                        <button type="action" name="act_help-close"
+                            style="border: none; background-color: rgba(0, 0, 0, 0);">
+                            <span class="icon">*</span>
+                        </button>
                     </div>
 
                     <div class="help-body">
@@ -72,6 +75,8 @@
                             <p>
                                 An action is anything you want to do that is not Combat or Magick. If you
                                 want to climb a tree, influence an NPC, etc.
+
+                                A Boon or Bane is an additional die, added to the roll.
                             </p>
                             <ul>
                                 <li><span style="font-weight: bold;">Action</span>: Rolls 1D6! and returns
@@ -82,7 +87,7 @@
                                     the single lowest die.</li>
                             </ul>
                             <p>
-                                Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1
+                                Also, you may Shift + Click the w/Boon or w/Bane button to select between 1
                                 and 6 Banes or Boons for your roll.
                             </p>
                         </div>
@@ -95,6 +100,8 @@
                                 any of them happened to explode. All of the dice displayed for an attack
                                 roll are potential strikes, depending on the die value and the armor of the
                                 target.
+
+                                A Boon or Bane is an additional die, added to the roll.
                             </p>
                             <ul>
                                 <li><span style="font-weight: bold;">Attack</span>: Rolls 1D6! (! =
@@ -105,7 +112,7 @@
                                     all potential strike dice.</li>
                             </ul>
                             <p>
-                                Also, you may Shift + Click the w/Boon or w/Bane buttons to select between 1
+                                Also, you may Shift + Click the w/Boon or w/Bane button to select between 1
                                 and 6 Banes or Boons for your roll.
                             </p>
                         </div>
@@ -185,13 +192,13 @@
 
                 <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
                     <label for="hero_path_features">Hero Path Features:</label>
-                    <textarea id="hero_path_features" name="attr_character_hero_path_features" rows="4"
+                    <textarea id="hero_path_features" class="small" name="attr_character_hero_path_features" rows="4"
                         cols="100"></textarea>
                 </div>
 
                 <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
                     <label for="magick" title="Sorcery Circle(s), Scrolls, Potions, etc...">Magick:</label>
-                    <textarea id="magick" name="attr_character_magick" rows="4" cols="100"></textarea>
+                    <textarea id="magick" class="small" name="attr_character_magick" rows="4" cols="100"></textarea>
                 </div>
             </div>
 
@@ -228,117 +235,123 @@
 
                     <div class="sheet-flex-col sheet-flex-centered">
                         <label for="description"
-                            style="font-size: 1rem; line-height: 1.2rem; margin-bottom: 2px !important;">Description
-                            (Looks, Demeanor, Quirks, Flaws):</label>
-                        <textarea id="description" name="attr_character_description" rows="3" cols="100"
+                            style="font-size: 1rem; line-height: 1.2rem; margin-bottom: 2px !important;">
+                            Description (Looks, Demeanor, Quirks, Flaws):
+                        </label>
+                        <textarea id="description" class="small" name="attr_character_description" rows="3" cols="100"
                             style="height: 64px !important;"></textarea>
                     </div>
                 </div>
 
                 <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
                     <label for="inclinations">Inclinations:</label>
-                    <textarea id="inclinations" name="attr_character_inclinations" rows="4" cols="100"></textarea>
+                    <textarea id="inclinations" class="small" name="attr_character_inclinations" rows="4"
+                        cols="100"></textarea>
                 </div>
 
                 <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
                     <label for="equipment" title="Wealth, Weapons, Armor, Gear, etc.">Equipment:</label>
-                    <textarea id="equipment" name="attr_character_equipment" rows="4" cols="100"></textarea>
+                    <textarea id="equipment" class="small" name="attr_character_equipment" rows="4"
+                        cols="100"></textarea>
                 </div>
             </div>
 
             <div class="sheet-flex-col sheet-col-gap sheet-button-section">
                 <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                    <button type="roll" name="roll_action"
-                        value="&{template:action} {{name=Action}} {{Roll=[[1d6!k1]]}}">Action</button>
+                    <button class="dice-roll" data-type="action">Action</button>
 
                     <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button class="action-boon" type="roll" name="roll_action-boon"
-                            value="@{action_boon_action}">w/Boon</button>
-                        <button type="action" name="act_action-boon-action" class="hidden"></button>
-                        <input type="hidden" name="attr_action_boon_action" value="">
-
-                        <button class="action-bane" type="roll" name="roll_action-bane"
-                            value="@{action_bane_action}">w/Bane</button>
-                        <button type="action" name="act_action-bane-action" class="hidden"></button>
-                        <input type="hidden" name="attr_action_bane_action" value="">
+                        <button class="dice-roll" data-type="action" data-boons="1">w/Boon</button>
+                        <button class="dice-roll" data-type="action" data-banes="1">w/Bane</button>
                     </div>
                 </div>
 
                 <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                    <button type="roll" name="roll_attack" value="@{attack_action}">Attack</button>
-                    <button type="action" name="act_attack-action" class="hidden"></button>
-                    <input type="hidden" name="attr_attack_action" value="">
+                    <button class="dice-roll" data-type="attack">Attack</button>
 
                     <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button class="attack-boon" type="roll" name="roll_attack-boon"
-                            value="@{attack_boon_action}">w/Boon</button>
-                        <button type="action" name="act_attack-boon-action" class="hidden"></button>
-                        <input type="hidden" name="attr_attack_boon_action" value="">
-
-                        <button class="attack-bane" type="roll" name="roll_attack-bane"
-                            value="@{attack_bane_action}">w/Bane</button>
-                        <button type="action" name="act_attack-bane-action" class="hidden"></button>
-                        <input type="hidden" name="attr_attack_bane_action" value="">
+                        <button class="dice-roll" data-type="attack" data-boons="1">w/Boon</button>
+                        <button class="dice-roll" data-type="attack" data-banes="1">w/Bane</button>
                     </div>
+                </div>
+
+                <div class="sheet-flex-col sheet-col-gap sheet-border-group">
+                    <button class="dice-roll" data-type="magick">Magick</button>
+                    <button class="dice-roll" data-type="miracle">Miracle</button>
                 </div>
 
                 <div class="sheet-flex-row sheet-row-gap">
                     <div class="sheet-flex-col sheet-col-gap sheet-border-group">
                         <label>Regular:</label>
                         <div class="sheet-flex-row sheet-row-gap">
-                            <button type="roll" name="roll_d6" value="&{template:action} {{name=1D6}} {{Roll=[[1d6]]}}"
-                                class="sheet-die">1D6</button>
-                            <button type="roll" name="roll_2d6"
-                                value="&{template:action} {{name=2D6}} {{Roll=[[2d6k1]]}}"
-                                class="sheet-die">2D6</button>
+                            <button class="dice-roll" data-type="dice" data-count="1"
+                                data-exploding="false">1D6</button>
+                            <button class="dice-roll" data-type="dice" data-count="2"
+                                data-exploding="false">2D6</button>
                         </div>
 
                         <div class="sheet-flex-row sheet-row-gap">
-                            <button type="roll" name="roll_3d6"
-                                value="&{template:action} {{name=3D6}} {{Roll=[[3d6k1]]}}"
-                                class="sheet-die">3D6</button>
-                            <button type="roll" name="roll_4d6"
-                                value="&{template:action} {{name=4D6}} {{Roll=[[4d6k1]]}}"
-                                class="sheet-die">4D6</button>
+                            <button class="dice-roll" data-type="dice" data-count="3"
+                                data-exploding="false">3D6</button>
+                            <button class="dice-roll" data-type="dice" data-count="4"
+                                data-exploding="false">4D6</button>
                         </div>
 
                         <div class="sheet-flex-row sheet-row-gap">
-                            <button type="roll" name="roll_5d6"
-                                value="&{template:action} {{name=5D6}} {{Roll=[[5d6k1]]}}"
-                                class="sheet-die">5D6</button>
-                            <button type="roll" name="roll_6d6"
-                                value="&{template:action} {{name=6D6}} {{Roll=[[6d6k1]]}}"
-                                class="sheet-die">6D6</button>
+                            <button class="dice-roll" data-type="dice" data-count="5"
+                                data-exploding="false">5D6</button>
+                            <button class="dice-roll" data-type="dice" data-count="6"
+                                data-exploding="false">6D6</button>
                         </div>
                     </div>
 
                     <div class="sheet-flex-col sheet-col-gap sheet-border-group">
                         <label>Exploding:</label>
                         <div class="sheet-flex-row sheet-row-gap">
-                            <button type="roll" name="roll_d6X"
-                                value="&{template:action} {{name=1D6!}} {{Roll=[[1d6!]]}}"
-                                class="sheet-die">1D6!</button>
-                            <button type="roll" name="roll_2d6X"
-                                value="&{template:action} {{name=2D6!}} {{Roll=[[2d6!k1]]}}"
-                                class="sheet-die">2D6!</button>
+                            <button class="dice-roll" data-type="dice" data-count="1"
+                                data-exploding="true">1D6!</button>
+                            <button class="dice-roll" data-type="dice" data-count="2"
+                                data-exploding="true">2D6!</button>
                         </div>
 
                         <div class="sheet-flex-row sheet-row-gap">
-                            <button type="roll" name="roll_3d6X"
-                                value="&{template:action} {{name=3D6!}} {{Roll=[[3d6!k1]]}}"
-                                class="sheet-die">3D6!</button>
-                            <button type="roll" name="roll_4d6X"
-                                value="&{template:action} {{name=4D6!}} {{Roll=[[4d6!k1]]}}"
-                                class="sheet-die">4D6!</button>
+                            <button class="dice-roll" data-type="dice" data-count="3"
+                                data-exploding="true">3D6!</button>
+                            <button class="dice-roll" data-type="dice" data-count="4"
+                                data-exploding="true">4D6!</button>
                         </div>
 
                         <div class="sheet-flex-row sheet-row-gap">
-                            <button type="roll" name="roll_5d6X"
-                                value="&{template:action} {{name=5D6!}} {{Roll=[[5d6!k1]]}}"
-                                class="sheet-die">5D6!</button>
-                            <button type="roll" name="roll_6d6X"
-                                value="&{template:action} {{name=6D6!}} {{Roll=[[6d6!k1cs>2]]}}"
-                                class="sheet-die">6D6!</button>
+                            <button class="dice-roll" data-type="dice" data-count="5"
+                                data-exploding="true">5D6!</button>
+                            <button class="dice-roll" data-type="dice" data-count="6"
+                                data-exploding="true">6D6!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sheet-flex-col sheet-col-gap sheet-border-group">
+                    <button class="notes-toggle" type="action" name="act_notes-open">Notes</button>
+
+                    <div class="notes-modal hidden">
+                        <div class="sheet-flex-col ${backgroundImage}">
+                            <div class="sheet-flex-col">
+                                <div class="sheet-flex-row sheet-flex-centered" style="margin-bottom: 4px;">
+                                    <div class="sheet-flex-row">
+                                        <div class="sheet-ezd6-logo"></div>
+                                        <h3>Core Sheet: Notes</h3>
+                                    </div>
+
+                                    <button type="action" name="act_notes-close"
+                                        style="border: none; background-color: rgba(0, 0, 0, 0);">
+                                        <span class="icon">*</span>
+                                    </button>
+                                </div>
+
+                                <div class="notes-body sheet-border-group" style="flex-grow: 1;">
+                                    <textarea class="large" name="attr_notes" rows="4" cols="200"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -355,6 +368,10 @@
     <h3>{{name}}: {{computed::Roll}}</h3>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-dice">
+    <h3>{{name}}: {{computed::Roll}}</h3>
+</rolltemplate>
+
 <script type="text/worker">
     const outerContainer = $20('div.sheet-outer-container');
     const characterSheet = $20('div.sheet-character-sheet');
@@ -364,7 +381,7 @@
         'sheet-button-orientation-right'
     ];
 
-    const backgroundImageClasses = [
+    const backgroundImages = [
         '',
         'sheet-border-line',
         'sheet-background-1',
@@ -378,7 +395,7 @@
         'sheet-background-9',
     ]
 
-    const clearBackgroundImage = () => backgroundImageClasses.forEach((imageClass) => {
+    const clearBackgroundImage = () => backgroundImages.forEach((imageClass) => {
         outerContainer.removeClass(imageClass);
     });
 
@@ -386,41 +403,36 @@
         characterSheet.removeClass(orientationClass);
     });
 
-    const RollOption = {
-        Default: 0,
-        DefaultBoon: 1,
-        QueryBoon: 2,
-        DefaultBane: 3,
-        QueryBane: 4,
-    };
-
     const rqBoons = '?{Number of Boons|1|2|3|4|5|6}';
     const rqBanes = '?{Number of Banes|1|2|3|4|5|6}';
-    
-    const rollAttack = (rollOption = RollOption.Default) => {
-        // RollOption.DefaultAttack:
-        let rollString = `&{template:computed} {{name=Attack}} {{Roll=[[1d6!kh1]]}}`;
+    const rqMagick = '?{Power Level|1|2|3|4|5|6}';
+    const rqMiracle = '?{Miracle|1|2|3|4|5|6}';
 
-        switch (rollOption) {
-            case RollOption.DefaultBoon:
-                rollString = `&{template:computed} {{name=Attack, 1 Boon}} {{Roll=[[2d6!kh1]]}}`;
-                break;
-            case RollOption.DefaultBane:
-                rollString = `&{template:computed} {{name=Attack, 1 Bane}} {{Roll=[[2d6kl1]]}}`;
-                break;
-            case RollOption.QueryBoon:
-                rollString = `&{template:computed} {{name=Attack, ${rqBoons} Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
-                break;
-            case RollOption.QueryBane:
-                rollString = `&{template:computed} {{name=Attack, ${rqBanes} Bane(s)}} {{Roll=[[(1+${rqBanes})d6kl1]]}}`;
-                break;
-            default: break;
+    const rollAttack = (params = { banes: 0, boones: 0, shiftKey: false }) => {
+        const { banes, boons, shiftKey } = params;
+
+        let rollString = '&{template:computed} ';
+
+        if (banes > 0) {
+            rollString += (
+                `{{name=Attack, with ${shiftKey ? rqBanes : banes} Banes}} `
+                + `{{Roll=[[(1 + ${shiftKey ? rqBanes : banes})d6!kl1]]}}`
+            );
+        } else if (boons > 0) {
+            rollString += (
+                `{{name=Attack, with ${shiftKey ? rqBoons : boons} Boons}} `
+                + `{{Roll=[[[[1 + ${shiftKey ? rqBoons : boons}]]d6!kh1]]}}`
+            );
+        } else {
+            rollString += '{{name=Attack}} {{Roll=[[1d6!kh1]]}}';
         }
 
         startRoll(
             rollString,
             (roll) => {
-                if (rollOption < 3) {
+                // console.debug('*** rollAttack: roll:', roll);
+                
+                if (banes === 0) {
                     const dice = [...roll.results.Roll.dice];
                     const count = dice.length;
 
@@ -447,25 +459,115 @@
         );
     };
 
-    on('sheet:opened change:character_name', (evt) => {
-        getAttrs([
-            'character_name',
-            'attack_action',
-            'attack_boon_action',
-            'attack_bane_action',
-            'action_boon_action',
-            'action_bane_action',
-        ], (data) => {
-            var attrsToChange = {};
+    const rollAction = (params = {
+        banes: 0,
+        boones: 0,
+        shiftKey: false,
+    }) => {
+        const { banes, boons, shiftKey } = params;
 
-            attrsToChange["attack_action"] = `%{${data["character_name"]}|attack-action}`;
-            attrsToChange["attack_boon_action"] = `%{${data["character_name"]}|attack-boon-action}`;
-            attrsToChange["attack_bane_action"] = `%{${data["character_name"]}|attack-bane-action}`;
-            attrsToChange["action_boon_action"] = `%{${data["character_name"]}|action-boon-action}`;
-            attrsToChange["action_bane_action"] = `%{${data["character_name"]}|action-bane-action}`;
+        let rollString = '&{template:action} ';
 
-            setAttrs(attrsToChange);
+        if (banes > 0) {
+            rollString += (
+                `{{name=Action, with ${shiftKey ? rqBanes : banes} Banes}} `
+                + `{{Roll=[[(1 + ${shiftKey ? rqBanes : banes})d6!kl1]]}}`
+            );
+        } else if (boons > 0) {
+            rollString += (
+                `{{name=Action, with ${shiftKey ? rqBoons : boons} Boons}} `
+                + `{{Roll=[[(1 + ${shiftKey ? rqBoons : boons})d6!kh1]]}}`
+            );
+        } else {
+            rollString += '{{name=Action}} {{Roll=[[1d6!kh1]]}}';
+        }
+
+        startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
+    };
+
+    const rollDice = (params = {
+        count: 1,
+        exploding: false,
+    }) => {
+        const { count, exploding } = params;
+        const notation = `${count}d6${exploding ? '!' : ''}`;
+
+        let rollString = `&{template:dice} {{name=${notation.toUpperCase()}}} {{Roll=[[${notation}]]}}`;
+
+        startRoll(rollString, (roll) => {
+            const Roll = roll.results.Roll.dice.sort((a, b) => (b - a));
+            finishRoll(roll.rollId, { Roll })
         });
+    };
+
+    const rollMagick = () => {
+        const notation = `${rqMagick}d6!`;
+
+        startRoll(
+            `&{template:dice} {{name=Magick: PowerLevel: ${rqMagick}}} {{Roll=[[${rqMagick}d6!]]}}`,
+            (roll) => {
+                const Roll = roll.results.Roll.dice.sort((a, b) => (b - a));
+                finishRoll(roll.rollId, { Roll })
+            }
+        );
+    };
+
+    const rollMiracle = () => {
+        const notation = `${rqMagick}d6!`;
+
+        startRoll(
+            `&{template:dice} {{name=Miracle: ${rqMiracle}}} {{Roll=[[${rqMiracle}d6!]]}}`,
+            (roll) => {
+                const Roll = roll.results.Roll.dice.sort((a, b) => (b - a));
+                finishRoll(roll.rollId, { Roll })
+            }
+        );
+    };
+
+    $20('button.dice-roll').on('click', (evt) => {
+        const { altKey, ctrlKey, metaKey, shiftKey } = evt;
+
+        let {
+            'data-type': type,
+            'data-boons': dataBoons,
+            'data-banes': dataBanes,
+            'data-count': dataCount,
+            'data-exploding': dataExploding,
+        } = evt.htmlAttributes;
+
+        dataBoons = parseInt(dataBoons);
+        if (isNaN(dataBoons)) dataBoons = 0;
+
+        dataBanes = parseInt(dataBanes);
+        if (isNaN(dataBanes)) dataBanes = 0;
+
+        const boons = dataBoons;
+        const banes = dataBanes;
+
+        let rollString
+
+        switch (type) {
+            case 'action':
+                rollAction({ banes, boons, shiftKey });
+                break;
+            case 'attack':
+                rollAttack({ banes, boons, shiftKey });
+                break;
+            case 'magick':
+                rollMagick();
+                break;
+            case 'miracle':
+                rollMiracle();
+                break;
+            default:
+                dataCount = parseInt(dataCount);
+                if (isNaN(dataCount)) dataCount = 1;
+
+                const exploding = (dataExploding === 'true') ? true : false;
+
+                rollDice({ count: dataCount, exploding })
+                break;
+        }
     });
 
     on('sheet:opened', () => {
@@ -477,36 +579,6 @@
             outerContainer.addClass(data.backgroundImage);
         });
     });
-
-    $20('button.action-boon').on('click', async (evt) => {
-        let rollString = `&{template:action} {{name=Action, 1 Boon}} {{Roll=[[2d6!kh1]]}}`;
-
-        if (evt.shiftKey) {
-            rollString = `&{template:action} {{name=Action, ${rqBoons} Boon(s)}} {{Roll=[[(1+${rqBoons})d6!kh1]]}}`;
-        }
-
-        startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
-    });
-
-    $20('button.action-bane').on('click', async (evt) => {
-        let rollString = `&{template:action} {{name=Action, 1Bane}} {{Roll=[[2d6kl1]]}}`;
-
-        if (evt.shiftKey) {
-            rollString = `&{template:action} {{name=Action, ${rqBanes} Bane(s)}} {{Roll=[[(1+${rqBanes})d6kl1]]}}`;
-        }
-
-        startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
-    });
-
-    on('clicked:attack-action', () => rollAttack());
-
-    $20('button.attack-boon').on('click', async (evt) => rollAttack(
-        evt.shiftKey ? RollOption.QueryBoon : RollOption.DefaultBoon
-    ));
-
-    $20('button.attack-bane').on('click', async (evt) => rollAttack(
-        evt.shiftKey ? RollOption.QueryBane : RollOption.DefaultBane
-    ));
 
     on('change:buttonOrientation', (evt) => {
         const { previousValue, newValue } = evt;
@@ -524,4 +596,7 @@
 
     on('clicked:help-open', () => $20('.help-modal').removeClass('hidden'));
     on('clicked:help-close', () => $20('.help-modal').addClass('hidden'));
+
+    on('clicked:notes-open', () => $20('.notes-modal').removeClass('hidden'));
+    on('clicked:notes-close', () => $20('.notes-modal').addClass('hidden'));
 </script>
