@@ -13,10 +13,126 @@
             </button>
         </div>
 
+        <div class="sheet-character-sheet sheet-row-gap ${buttonOrientation}">
+            <div class="sheet-flex-col sheet-col-gap">
+                <div class="sheet-flex-col sheet-border-group">
+                    <div class="sheet-flex-row">
+                        <label for="character_name">Name:</label>
+                        <input id="character_name" type="text" name="attr_character_name" />
+                    </div>
+
+                    <div class="sheet-flex-row">
+                        <label for="species">Species:</label>
+                        <input id="species" type="text" name="attr_character_species" />
+                    </div>
+
+                    <div class="sheet-flex-row">
+                        <label for="path">Hero Path:</label>
+                        <input id="path" type="text" name="attr_character_hero_path" />
+                    </div>
+
+                    <div class="sheet-flex-col sheet-flex-centered">
+                        <label for="aspects"
+                            style="font-size: 1rem; line-height: 1.2rem; margin-bottom: 2px !important;">
+                            Aspect(s):
+                        </label>
+                        <textarea id="aspects" class="small" name="attr_character_aspects"
+                            style="height: 40px !important;"></textarea>
+                    </div>
+                </div>
+
+                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
+                    <label for="hero_path_features">Hero Path Features:</label>
+                    <textarea id="hero_path_features" class="small" name="attr_character_hero_path_features"></textarea>
+                </div>
+
+                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
+                    <label for="magick" title="Sorcery Circle(s), Scrolls, Potions, etc...">Magick:</label>
+                    <textarea id="magick" class="small" name="attr_character_magick"></textarea>
+                </div>
+            </div>
+
+            <div class="sheet-flex-col sheet-col-gap">
+                <div class="sheet-flex-col sheet-flex-centered sheet-border-group sheet-col-gap"
+                    style="padding: 4px 4px !important;">
+                    <div class="sheet-flex-row sheet-flex-centered sheet-row-gap">
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="health" style="text-align: center;">Health:</label>
+                            <input id="health" class="sheet-single-digit" type="number" name="attr_character_health" />
+                        </div>
+
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="karma" style="text-align: center;">Karma:</label>
+                            <input id="karma" class="sheet-single-digit" type="number" name="attr_character_karma" />
+                        </div>
+
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="armor_save" style="text-align: center;"> Armor Save:</label>
+                            <input id="armor_save" class="sheet-single-digit" type="number" name="attr_armor_save" />
+                        </div>
+
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="hero_die" style="text-align: center;">Hero Die:</label>
+                            <input id="hero_die" class="sheet-single-digit" type="number" name="attr_hero_die" />
+                        </div>
+
+                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
+                            <label for="miraculous_save" style="text-align: center;">Miraculous Save:</label>
+                            <input id="miraculous_save" class="sheet-single-digit" type="number"
+                                name="attr_miraculous_save" />
+                        </div>
+                    </div>
+
+                    <div class="sheet-flex-col sheet-flex-centered" style="width: 100%;">
+                        <label for="description"
+                            style="font-size: 1rem; line-height: 1.2rem; margin-bottom: 2px !important;">
+                            Description (Looks, Demeanor, Quirks, Flaws):
+                        </label>
+                        <textarea id="description" class="small" name="attr_character_description"
+                            style="height: 64px !important;"></textarea>
+                    </div>
+                </div>
+
+                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
+                    <label for="inclinations">Inclinations:</label>
+                    <textarea id="inclinations" class="small" name="attr_character_inclinations"></textarea>
+                </div>
+
+                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
+                    <label for="equipment" title="Wealth, Weapons, Armor, Gear, etc.">Equipment:</label>
+                    <textarea id="equipment" class="small" name="attr_character_equipment"></textarea>
+                </div>
+            </div>
+
+            <div class="sheet-flex-col sheet-border-group sheet-col-gap"
+                style="padding-top: 10px; padding-bottom: 10px;">
+                <button class="dice-roll" data-count="1" data-explode="false">1D6</button>
+                <button class="dice-roll" data-count="2" data-explode="false">2D6</button>
+                <button class="dice-roll" data-count="3" data-explode="false">3D6</button>
+                <button class="dice-roll" data-count="4" data-explode="false">4D6</button>
+                <button class="dice-roll" data-count="5" data-explode="false">5D6</button>
+                <button class="dice-roll" data-count="6" data-explode="false">6D6</button>
+
+                <br />
+
+                <button class="dice-roll" data-count="1" data-explode="true">1D6!</button>
+                <button class="dice-roll" data-count="2" data-explode="true">2D6!</button>
+                <button class="dice-roll" data-count="3" data-explode="true">3D6!</button>
+                <button class="dice-roll" data-count="4" data-explode="true">4D6!</button>
+                <button class="dice-roll" data-count="5" data-explode="true">5D6!</button>
+                <button class="dice-roll" data-count="6" data-explode="true">6D6!</button>
+
+                <br />
+
+                <button class="notes-toggle" type="action" name="act_notes-open">Notes</button>
+            </div>
+        </div>
+
         <div class="help-modal hidden">
             <div class="sheet-flex-col sheet-col-gap ${backgroundImage}">
                 <div>
-                    <div class="sheet-flex-row sheet-flex-centered" style="margin-bottom: 4px;">
+                    <div class="sheet-flex-row sheet-flex-centered"
+                        style="justify-content: space-between; margin-bottom: 4px;">
                         <div class="sheet-flex-row">
                             <div class="sheet-ezd6-logo"></div>
                             <h3>Core Sheet: Help</h3>
@@ -112,138 +228,24 @@
             </div>
         </div>
 
-        <div class="sheet-character-sheet sheet-row-gap ${buttonOrientation}">
-            <div class="sheet-flex-col sheet-col-gap">
-                <div class="sheet-flex-col sheet-border-group">
-                    <div class="sheet-flex-row">
-                        <label for="character_name">Name:</label>
-                        <input id="character_name" type="text" name="attr_character_name" />
-                    </div>
-
-                    <div class="sheet-flex-row">
-                        <label for="species">Species:</label>
-                        <input id="species" type="text" name="attr_character_species" />
-                    </div>
-
-                    <div class="sheet-flex-row">
-                        <label for="path">Hero Path:</label>
-                        <input id="path" type="text" name="attr_character_hero_path" />
-                    </div>
-
-                    <div class="sheet-flex-row">
-                        <label for="aspect_1">Aspect 1:</label>
-                        <input id="aspect_1" type="text" name="attr_character_aspect_1" />
-                    </div>
-
-                    <div class="sheet-flex-row">
-                        <label for="aspect_1">Aspect 2:</label>
-                        <input id="aspect_1" type="text" name="attr_character_aspect_2" />
-                    </div>
-                </div>
-
-                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
-                    <label for="hero_path_features">Hero Path Features:</label>
-                    <textarea id="hero_path_features" class="small" name="attr_character_hero_path_features" rows="4"
-                        cols="100"></textarea>
-                </div>
-
-                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
-                    <label for="magick" title="Sorcery Circle(s), Scrolls, Potions, etc...">Magick:</label>
-                    <textarea id="magick" class="small" name="attr_character_magick" rows="4" cols="100"></textarea>
-                </div>
-            </div>
-
-            <div class="sheet-flex-col sheet-col-gap" style="align-content: start;">
-                <div class="sheet-flex-col sheet-flex-centered sheet-border-group sheet-col-gap"
-                    style="padding: 4px 4px !important;">
-                    <div class="sheet-flex-row sheet-flex-centered sheet-row-gap">
-                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                            <label for="health" style="text-align: center;">Health:</label>
-                            <input id="health" class="sheet-single-digit" type="number" name="attr_character_health" />
+        <div class="notes-modal hidden">
+            <div class="sheet-flex-col ${backgroundImage}">
+                <div class="sheet-flex-col">
+                    <div class="sheet-flex-row sheet-flex-centered"
+                        style="justify-content: space-between; margin-bottom: 4px;">
+                        <div class="sheet-flex-row">
+                            <div class="sheet-ezd6-logo"></div>
+                            <h3>Core Sheet: Notes</h3>
                         </div>
 
-                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                            <label for="karma" style="text-align: center;">Karma:</label>
-                            <input id="karma" class="sheet-single-digit" type="number" name="attr_character_karma" />
-                        </div>
-
-                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                            <label for="armor_save" style="text-align: center;"> Armor Save:</label>
-                            <input id="armor_save" class="sheet-single-digit" type="number" name="attr_armor_save" />
-                        </div>
-
-                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                            <label for="hero_die" style="text-align: center;">Hero Die:</label>
-                            <input id="hero_die" class="sheet-single-digit" type="number" name="attr_hero_die" />
-                        </div>
-
-                        <div class="sheet-flex-col sheet-flex-centered sheet-attr-group">
-                            <label for="miraculous_save" style="text-align: center;">Miraculous Save:</label>
-                            <input id="miraculous_save" class="sheet-single-digit" type="number"
-                                name="attr_miraculous_save" />
-                        </div>
+                        <button type="action" name="act_notes-close"
+                            style="border: none; background-color: rgba(0, 0, 0, 0);">
+                            <span class="pictos-icon">*</span>
+                        </button>
                     </div>
 
-                    <div class="sheet-flex-col sheet-flex-centered">
-                        <label for="description"
-                            style="font-size: 1rem; line-height: 1.2rem; margin-bottom: 2px !important;">
-                            Description (Looks, Demeanor, Quirks, Flaws):
-                        </label>
-                        <textarea id="description" class="small" name="attr_character_description" rows="3" cols="100"
-                            style="height: 64px !important;"></textarea>
-                    </div>
-                </div>
-
-                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
-                    <label for="inclinations">Inclinations:</label>
-                    <textarea id="inclinations" class="small" name="attr_character_inclinations" rows="4"
-                        cols="100"></textarea>
-                </div>
-
-                <div class="sheet-flex-col sheet-flex-centered sheet-border-group">
-                    <label for="equipment" title="Wealth, Weapons, Armor, Gear, etc.">Equipment:</label>
-                    <textarea id="equipment" class="small" name="attr_character_equipment" rows="4"
-                        cols="100"></textarea>
-                </div>
-            </div>
-
-            <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                <button class="dice-roll" data-count="1" data-explode="false">1D6</button>
-                <button class="dice-roll" data-count="2" data-explode="false">2D6</button>
-                <button class="dice-roll" data-count="3" data-explode="false">3D6</button>
-                <button class="dice-roll" data-count="4" data-explode="false">4D6</button>
-                <button class="dice-roll" data-count="5" data-explode="false">5D6</button>
-                <button class="dice-roll" data-count="6" data-explode="false">6D6</button>
-                <br />
-                <button class="dice-roll" data-count="1" data-explode="true">1D6!</button>
-                <button class="dice-roll" data-count="2" data-explode="true">2D6!</button>
-                <button class="dice-roll" data-count="3" data-explode="true">3D6!</button>
-                <button class="dice-roll" data-count="4" data-explode="true">4D6!</button>
-                <button class="dice-roll" data-count="5" data-explode="true">5D6!</button>
-                <button class="dice-roll" data-count="6" data-explode="true">6D6!</button>
-                <br />
-
-                <button class="notes-toggle" type="action" name="act_notes-open">Notes</button>
-
-                <div class="notes-modal hidden">
-                    <div class="sheet-flex-col ${backgroundImage}">
-                        <div class="sheet-flex-col">
-                            <div class="sheet-flex-row sheet-flex-centered" style="margin-bottom: 4px;">
-                                <div class="sheet-flex-row">
-                                    <div class="sheet-ezd6-logo"></div>
-                                    <h3>Core Sheet: Notes</h3>
-                                </div>
-
-                                <button type="action" name="act_notes-close"
-                                    style="border: none; background-color: rgba(0, 0, 0, 0);">
-                                    <span class="pictos-icon">*</span>
-                                </button>
-                            </div>
-
-                            <div class="notes-body sheet-border-group" style="flex-grow: 1;">
-                                <textarea class="large" name="attr_notes" rows="4" cols="200"></textarea>
-                            </div>
-                        </div>
+                    <div class="notes-body sheet-border-group" style="flex-grow: 1;">
+                        <textarea class="large" name="attr_notes" rows="4" cols="200"></textarea>
                     </div>
                 </div>
             </div>
