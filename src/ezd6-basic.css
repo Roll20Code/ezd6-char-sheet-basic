@@ -129,7 +129,7 @@ select {
     margin: 0 !important;
 }
 
-span.icon {
+span.pictos-icon {
     font-family: 'Pictos';
     font-size: 2rem;
 }
@@ -330,7 +330,6 @@ button.notes-toggle {
     color: #000;
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0);
-    /* background-color: rgba(255, 255, 255, 1); */
     background-repeat: no-repeat;
     background-size: 600px 400px;
     background-image: url('https://raw.githubusercontent.com/Roll20Code/ezd6-core-sheet/main/src/art/background_1.png');
