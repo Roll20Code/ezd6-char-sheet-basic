@@ -30,6 +30,8 @@
 
 .sheet-character-sheet {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     width: 100%;
 }
@@ -123,6 +125,7 @@
 label {
     color: #000000;
     margin: 0 !important;
+    padding: 0 !important;
 }
 
 select {
@@ -145,21 +148,6 @@ span.pictos-icon {
 
 .sheet-flex-col.sheet-flex-centered {
     align-items: center;
-}
-
-.sheet-flex-space-between {
-    justify-content: space-between;
-    align-items: center;
-}
-
-.sheet-flex-space-around-row {
-    justify-content: space-around;
-    align-items: center;
-}
-
-.sheet-flex-space-around-col {
-    justify-content: center;
-    align-items: space-around;
 }
 
 input.sheet-single-digit {
@@ -203,19 +191,9 @@ textarea.large {
     box-sizing: border-box;
 }
 
-.sheet-button-section button {
-    margin: 0 !important;
-}
-
 button.sheet-die {
     width: 32px;
     height: 20px;
-}
-
-.sheet-button-section button[type="roll"]:before {
-    content: "" !important;
-    font-size: 0.75em;
-    display: none;
 }
 
 .sheet-border-group {
@@ -233,14 +211,22 @@ button.sheet-die {
     border: 1px solid gray;
 }
 
-label {
-    padding: 0 !important;
-}
-
 button.dice-roll {
     background-color: rgba(255, 255, 255, 0);
     border-radius: 4px;
     border: 1px solid gray;
+}
+
+button.help-toggle {
+    font-size: 2em;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+button.notes-toggle {
+    background-color: rgba(255, 255, 255, 0) !important;
+    border-radius: 4px !important;
+    border: 1px solid gray !important;
 }
 
 .sheet-attr-group label {
@@ -250,12 +236,6 @@ button.dice-roll {
     line-height: 1rem;
     margin: 0;
     padding: 0;
-}
-
-button.help-toggle {
-    font-size: 2em;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
 }
 
 .help-modal {
@@ -296,17 +276,6 @@ button.help-toggle {
     max-height: 332px;
     overflow: hidden;
     overflow-y: scroll;
-}
-
-button.notes-toggle {
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 4px;
-    border: 1px solid gray;
-}
-
-button.notes-toggle {
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
 }
 
 .notes-modal {

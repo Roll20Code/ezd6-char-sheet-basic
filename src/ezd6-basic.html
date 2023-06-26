@@ -45,81 +45,15 @@
                                 displayed and used. You can hover your mouse cursor over the result to see
                                 all the dice rolls.
                             </p>
-
-                            <p>
-                            <h5>Sheet Options:</h5>
-
-                            <select name="attr_buttonOrientation" style="width: 172px !important;">
-                                <option value="sheet-button-orientation-left">Buttons Left</option>
-                                <option value="sheet-button-orientation-right">Buttons Right</option>
-                            </select>
-
-                            <select name="attr_backgroundImage" style="width: 172px !important;">
-                                <option value="">No Background</option>
-                                <option value="sheet-border-line">Border</option>
-                                <option value="sheet-background-1">Background 1</option>
-                                <option value="sheet-background-2">Background 2</option>
-                                <option value="sheet-background-3">Background 3</option>
-                                <option value="sheet-background-4">Background 4</option>
-                                <option value="sheet-background-5">Background 5</option>
-                                <option value="sheet-background-6">Background 6</option>
-                                <option value="sheet-background-7">Background 7</option>
-                                <option value="sheet-background-8">Background 8</option>
-                                <option value="sheet-background-9">Background 9</option>
-                            </select>
-                            </p>
                         </div>
 
                         <div class="sheet-border-group">
-                            <h4>Action, w/Boon, w/Bane Buttons:</h4>
+                            <h4>Dice Roll Buttons:</h4>
+                            <h6>D6, 2D6, 3D6, 4D6, 5D6, 6D6</h6>
+                            <h6>D6!, 2D6!, 3D6!, 4D6!, 5D6!, 6D6!</h6>
                             <p>
-                                An action is anything you want to do that is not Combat or Magick. If you
-                                want to climb a tree, influence an NPC, etc.
-
-                                A Boon or Bane is an additional die, added to the roll.
+                                These are just plain and exploding rolls that are presented in an EZD6 format.
                             </p>
-                            <ul>
-                                <li><span style="font-weight: bold;">Action</span>: Rolls 1D6! and returns
-                                    the single highest die.</li>
-                                <li><span style="font-weight: bold;">w/Boon</span>: Rolls 2D6! and returns
-                                    the single highest die.</li>
-                                <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6 and returns
-                                    the single lowest die.</li>
-                            </ul>
-                            <p>
-                                Also, you may Shift + Click the w/Boon or w/Bane button to select between 1
-                                and 6 Banes or Boons for your roll.
-                            </p>
-                        </div>
-
-                        <div class="sheet-border-group">
-                            <h4>Attack, w/Boon, w/Bane Buttons:</h4>
-                            <p>
-                                An attack is simply attacking an enemy or NPC. The roll results are a little
-                                different than an action. The results of the row will show multiple dice if
-                                any of them happened to explode. All of the dice displayed for an attack
-                                roll are potential strikes, depending on the die value and the armor of the
-                                target.
-
-                                A Boon or Bane is an additional die, added to the roll.
-                            </p>
-                            <ul>
-                                <li><span style="font-weight: bold;">Attack</span>: Rolls 1D6! (! =
-                                    exploding) and returns all potential strike dice.</li>
-                                <li><span style="font-weight: bold;">w/Boon</span>: Rolls 2D6! and returns
-                                    all potential strike dice.</li>
-                                <li><span style="font-weight: bold;">w/Bane</span>: Rolls 2D6 and returns
-                                    all potential strike dice.</li>
-                            </ul>
-                            <p>
-                                Also, you may Shift + Click the w/Boon or w/Bane button to select between 1
-                                and 6 Banes or Boons for your roll.
-                            </p>
-                        </div>
-
-                        <div class="sheet-border-group">
-                            <h4>D6, D6!, 2D6, 2D6!, 3D6, 3D6!, 4D6, 4D6!, 5D6, 5D6!, 6D6, 6D6! Buttons:</h4>
-                            <p>These are just plain rolls that use the default result of Roll20.</p>
                         </div>
 
                         <div class="sheet-border-group">
@@ -128,6 +62,10 @@
                                 This lets you configure which side the "Buttons" column is positioned, left
                                 or right side of the sheet.
                             </p>
+                            <select name="attr_buttonOrientation" style="width: 172px !important;">
+                                <option value="sheet-button-orientation-left">Buttons Left</option>
+                                <option value="sheet-button-orientation-right">Buttons Right</option>
+                            </select>
                         </div>
 
                         <div class="sheet-border-group">
@@ -141,6 +79,19 @@
                                 <li><span style="font-weight: bold;">Background (1-9)</span>: Any of 9
                                     beautiful background images by Mathew Halstead.</li>
                             </ul>
+                            <select name="attr_backgroundImage" style="width: 172px !important;">
+                                <option value="">No Background</option>
+                                <option value="sheet-border-line">Border</option>
+                                <option value="sheet-background-1">Background 1</option>
+                                <option value="sheet-background-2">Background 2</option>
+                                <option value="sheet-background-3">Background 3</option>
+                                <option value="sheet-background-4">Background 4</option>
+                                <option value="sheet-background-5">Background 5</option>
+                                <option value="sheet-background-6">Background 6</option>
+                                <option value="sheet-background-7">Background 7</option>
+                                <option value="sheet-background-8">Background 8</option>
+                                <option value="sheet-background-9">Background 9</option>
+                            </select>
                         </div>
 
                         <div class="sheet-border-group">
@@ -256,101 +207,41 @@
                 </div>
             </div>
 
-            <div class="sheet-flex-col sheet-col-gap sheet-button-section">
-                <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                    <button class="dice-roll" data-type="action">Action</button>
+            <div class="sheet-flex-col sheet-col-gap sheet-border-group">
+                <button class="dice-roll" data-count="1" data-explode="false">1D6</button>
+                <button class="dice-roll" data-count="2" data-explode="false">2D6</button>
+                <button class="dice-roll" data-count="3" data-explode="false">3D6</button>
+                <button class="dice-roll" data-count="4" data-explode="false">4D6</button>
+                <button class="dice-roll" data-count="5" data-explode="false">5D6</button>
+                <button class="dice-roll" data-count="6" data-explode="false">6D6</button>
+                <br />
+                <button class="dice-roll" data-count="1" data-explode="true">1D6!</button>
+                <button class="dice-roll" data-count="2" data-explode="true">2D6!</button>
+                <button class="dice-roll" data-count="3" data-explode="true">3D6!</button>
+                <button class="dice-roll" data-count="4" data-explode="true">4D6!</button>
+                <button class="dice-roll" data-count="5" data-explode="true">5D6!</button>
+                <button class="dice-roll" data-count="6" data-explode="true">6D6!</button>
+                <br />
 
-                    <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button class="dice-roll" data-type="action" data-boons="1">w/Boon</button>
-                        <button class="dice-roll" data-type="action" data-banes="1">w/Bane</button>
-                    </div>
-                </div>
+                <button class="notes-toggle" type="action" name="act_notes-open">Notes</button>
 
-                <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                    <button class="dice-roll" data-type="attack">Attack</button>
-
-                    <div class="sheet-flex-row" style="justify-content: space-between;">
-                        <button class="dice-roll" data-type="attack" data-boons="1">w/Boon</button>
-                        <button class="dice-roll" data-type="attack" data-banes="1">w/Bane</button>
-                    </div>
-                </div>
-
-                <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                    <button class="dice-roll" data-type="magick">Magick</button>
-                    <button class="dice-roll" data-type="miracle">Miracle</button>
-                </div>
-
-                <div class="sheet-flex-row sheet-row-gap">
-                    <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                        <label>Regular:</label>
-                        <div class="sheet-flex-row sheet-row-gap">
-                            <button class="dice-roll" data-type="dice" data-count="1"
-                                data-exploding="false">1D6</button>
-                            <button class="dice-roll" data-type="dice" data-count="2"
-                                data-exploding="false">2D6</button>
-                        </div>
-
-                        <div class="sheet-flex-row sheet-row-gap">
-                            <button class="dice-roll" data-type="dice" data-count="3"
-                                data-exploding="false">3D6</button>
-                            <button class="dice-roll" data-type="dice" data-count="4"
-                                data-exploding="false">4D6</button>
-                        </div>
-
-                        <div class="sheet-flex-row sheet-row-gap">
-                            <button class="dice-roll" data-type="dice" data-count="5"
-                                data-exploding="false">5D6</button>
-                            <button class="dice-roll" data-type="dice" data-count="6"
-                                data-exploding="false">6D6</button>
-                        </div>
-                    </div>
-
-                    <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                        <label>Exploding:</label>
-                        <div class="sheet-flex-row sheet-row-gap">
-                            <button class="dice-roll" data-type="dice" data-count="1"
-                                data-exploding="true">1D6!</button>
-                            <button class="dice-roll" data-type="dice" data-count="2"
-                                data-exploding="true">2D6!</button>
-                        </div>
-
-                        <div class="sheet-flex-row sheet-row-gap">
-                            <button class="dice-roll" data-type="dice" data-count="3"
-                                data-exploding="true">3D6!</button>
-                            <button class="dice-roll" data-type="dice" data-count="4"
-                                data-exploding="true">4D6!</button>
-                        </div>
-
-                        <div class="sheet-flex-row sheet-row-gap">
-                            <button class="dice-roll" data-type="dice" data-count="5"
-                                data-exploding="true">5D6!</button>
-                            <button class="dice-roll" data-type="dice" data-count="6"
-                                data-exploding="true">6D6!</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sheet-flex-col sheet-col-gap sheet-border-group">
-                    <button class="notes-toggle" type="action" name="act_notes-open">Notes</button>
-
-                    <div class="notes-modal hidden">
-                        <div class="sheet-flex-col ${backgroundImage}">
-                            <div class="sheet-flex-col">
-                                <div class="sheet-flex-row sheet-flex-centered" style="margin-bottom: 4px;">
-                                    <div class="sheet-flex-row">
-                                        <div class="sheet-ezd6-logo"></div>
-                                        <h3>Core Sheet: Notes</h3>
-                                    </div>
-
-                                    <button type="action" name="act_notes-close"
-                                        style="border: none; background-color: rgba(0, 0, 0, 0);">
-                                        <span class="pictos-icon">*</span>
-                                    </button>
+                <div class="notes-modal hidden">
+                    <div class="sheet-flex-col ${backgroundImage}">
+                        <div class="sheet-flex-col">
+                            <div class="sheet-flex-row sheet-flex-centered" style="margin-bottom: 4px;">
+                                <div class="sheet-flex-row">
+                                    <div class="sheet-ezd6-logo"></div>
+                                    <h3>Core Sheet: Notes</h3>
                                 </div>
 
-                                <div class="notes-body sheet-border-group" style="flex-grow: 1;">
-                                    <textarea class="large" name="attr_notes" rows="4" cols="200"></textarea>
-                                </div>
+                                <button type="action" name="act_notes-close"
+                                    style="border: none; background-color: rgba(0, 0, 0, 0);">
+                                    <span class="pictos-icon">*</span>
+                                </button>
+                            </div>
+
+                            <div class="notes-body sheet-border-group" style="flex-grow: 1;">
+                                <textarea class="large" name="attr_notes" rows="4" cols="200"></textarea>
                             </div>
                         </div>
                     </div>
@@ -360,16 +251,142 @@
     </div>
 </div>
 
-<rolltemplate class="sheet-rolltemplate-action">
-    <h3>{{name}}: {{Roll}}</h3>
-</rolltemplate>
-
-<rolltemplate class="sheet-rolltemplate-computed">
-    <h3>{{name}}: {{computed::Roll}}</h3>
-</rolltemplate>
-
 <rolltemplate class="sheet-rolltemplate-dice">
-    <h3>{{name}}: {{computed::Roll}}</h3>
+    <h3>{{name}}</h3>
+
+    {{computed::roll0}}
+
+    {{#roll1}}
+    &nbsp;|&nbsp;&nbsp;{{computed::roll1}}
+    {{/roll1}}
+
+    {{#roll2}}
+    &nbsp;|&nbsp;&nbsp;{{computed::roll2}}
+    {{/roll2}}
+
+    {{#roll3}}
+    &nbsp;|&nbsp;&nbsp;{{computed::roll3}}
+    {{/roll3}}
+
+    {{#roll4}}
+    &nbsp;|&nbsp;&nbsp;{{computed::roll4}}
+    {{/roll4}}
+
+    {{#roll5}}
+    &nbsp;|&nbsp;&nbsp;{{computed::roll5}}
+    {{/roll5}}
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-dice-explode">
+    <h3>{{name}}</h3>
+
+    <p>
+        {{computed::roll0}}
+        {{#rollGreater() roll0 5}}
+        <span style="font-family: 'Pictos Custom';">t&nbsp;</span>{{computed::expl0}}
+        {{/rollGreater() roll0 5}}
+
+        {{^roll1}}
+    </p>{{/roll1}}
+
+    {{#roll1}}
+    {{#rollGreater() roll0 5}}</p>
+    <p>{{/rollGreater() roll0 5}}
+
+        {{#^rollGreater() roll0 5}}
+        {{#rollGreater() roll1 5}}</p>
+    <p>{{/rollGreater() roll1 5}}
+        {{#^rollGreater() roll1 5}}&nbsp;|&nbsp;{{/^rollGreater() roll1 5}}
+        {{/^rollGreater() roll0 5}}
+
+        {{computed::roll1}}
+
+        {{#rollGreater() roll1 5}}
+        <span style="font-family: 'Pictos Custom';">t&nbsp;</span>{{computed::expl1}}
+        {{/rollGreater() roll1 5}}
+        {{/roll1}}
+
+        {{^roll2}}
+    </p>{{/roll2}}
+
+    {{#roll2}}
+    {{#rollGreater() roll1 5}}</p>
+    <p>{{/rollGreater() roll1 5}}
+
+        {{#^rollGreater() roll1 5}}
+        {{#rollGreater() roll2 5}}</p>
+    <p>{{/rollGreater() roll2 5}}
+        {{#^rollGreater() roll2 5}}&nbsp;|&nbsp;{{/^rollGreater() roll2 5}}
+        {{/^rollGreater() roll1 5}}
+
+        {{computed::roll2}}
+
+        {{#rollGreater() roll2 5}}
+        <span style="font-family: 'Pictos Custom';">t&nbsp;</span>{{computed::expl2}}
+        {{/rollGreater() roll2 5}}
+        {{/roll2}}
+
+        {{^roll3}}
+    </p>{{/roll3}}
+
+    {{#roll3}}
+    {{#rollGreater() roll2 5}}</p>
+    <p>{{/rollGreater() roll2 5}}
+
+        {{#^rollGreater() roll2 5}}
+        {{#rollGreater() roll3 5}}</p>
+    <p>{{/rollGreater() roll3 5}}
+        {{#^rollGreater() roll3 5}}&nbsp;|&nbsp;{{/^rollGreater() roll3 5}}
+        {{/^rollGreater() roll2 5}}
+
+        {{computed::roll3}}
+
+        {{#rollGreater() roll3 5}}
+        <span style="font-family: 'Pictos Custom';">t&nbsp;</span>{{computed::expl3}}
+        {{/rollGreater() roll3 5}}
+        {{/roll3}}
+
+        {{^roll4}}
+    </p>{{/roll4}}
+
+    {{#roll4}}
+    {{#rollGreater() roll3 5}}</p>
+    <p>{{/rollGreater() roll3 5}}
+
+        {{#^rollGreater() roll3 5}}
+        {{#rollGreater() roll4 5}}</p>
+    <p>{{/rollGreater() roll4 5}}
+        {{#^rollGreater() roll4 5}}&nbsp;|&nbsp;{{/^rollGreater() roll4 5}}
+        {{/^rollGreater() roll3 5}}
+
+        {{computed::roll4}}
+
+        {{#rollGreater() roll4 5}}
+        <span style="font-family: 'Pictos Custom';">t&nbsp;</span>{{computed::expl4}}
+        {{/rollGreater() roll4 5}}
+        {{/roll4}}
+
+        {{^roll5}}
+    </p>{{/roll5}}
+
+    {{#roll5}}
+    {{#rollGreater() roll4 5}}</p>
+    <p>{{/rollGreater() roll4 5}}
+
+        {{#^rollGreater() roll4 5}}
+        {{#rollGreater() roll5 5}}</p>
+    <p>{{/rollGreater() roll5 5}}
+        {{#^rollGreater() roll5 5}}&nbsp;|&nbsp;{{/^rollGreater() roll5 5}}
+        {{/^rollGreater() roll4 5}}
+
+        {{computed::roll5}}
+
+        {{#rollGreater() roll5 5}}
+        <span style="font-family: 'Pictos Custom';">t&nbsp;</span>{{computed::expl5}}
+        {{/rollGreater() roll5 5}}
+        {{/roll5}}
+
+    </p>
 </rolltemplate>
 
 <script type="text/worker">
@@ -403,171 +420,40 @@
         characterSheet.removeClass(orientationClass);
     });
 
-    const rqBoons = '?{Number of Boons|1|2|3|4|5|6}';
-    const rqBanes = '?{Number of Banes|1|2|3|4|5|6}';
-    const rqMagick = '?{Power Level|1|2|3|4|5|6}';
-    const rqMiracle = '?{Miracle|1|2|3|4|5|6}';
-
-    const rollAttack = (params = { banes: 0, boones: 0, shiftKey: false }) => {
-        const { banes, boons, shiftKey } = params;
-
-        let rollString = '&{template:computed} ';
-
-        if (banes > 0) {
-            rollString += (
-                `{{name=Attack, with ${shiftKey ? rqBanes : banes} Banes}} `
-                + `{{Roll=[[(1 + ${shiftKey ? rqBanes : banes})d6!kl1]]}}`
-            );
-        } else if (boons > 0) {
-            rollString += (
-                `{{name=Attack, with ${shiftKey ? rqBoons : boons} Boons}} `
-                + `{{Roll=[[[[1 + ${shiftKey ? rqBoons : boons}]]d6!kh1]]}}`
-            );
-        } else {
-            rollString += '{{name=Attack}} {{Roll=[[1d6!kh1]]}}';
-        }
-
-        startRoll(
-            rollString,
-            (roll) => {
-                // console.debug('*** rollAttack: roll:', roll);
-                
-                if (banes === 0) {
-                    const dice = [...roll.results.Roll.dice];
-                    const count = dice.length;
-
-                    const native = [];
-                    const additional = [];
-
-                    while (dice.length > 0) {
-                        let current = dice.shift();
-                        native.push(current);
-
-                        while (current === 6 && dice.length > 0) {
-                            current = dice.shift();
-                            additional.push(current);
-                        }
-                    }
-
-                    native.sort((a, b) => (b - a));
-
-                    finishRoll(roll.rollId, { Roll: [native[0], ...additional] });
-                } else {
-                    finishRoll(roll.rollId, { Roll: roll.results.Roll.result });
-                }
-            }
-        );
-    };
-
-    const rollAction = (params = {
-        banes: 0,
-        boones: 0,
-        shiftKey: false,
-    }) => {
-        const { banes, boons, shiftKey } = params;
-
-        let rollString = '&{template:action} ';
-
-        if (banes > 0) {
-            rollString += (
-                `{{name=Action, with ${shiftKey ? rqBanes : banes} Banes}} `
-                + `{{Roll=[[(1 + ${shiftKey ? rqBanes : banes})d6!kl1]]}}`
-            );
-        } else if (boons > 0) {
-            rollString += (
-                `{{name=Action, with ${shiftKey ? rqBoons : boons} Boons}} `
-                + `{{Roll=[[(1 + ${shiftKey ? rqBoons : boons})d6!kh1]]}}`
-            );
-        } else {
-            rollString += '{{name=Action}} {{Roll=[[1d6!kh1]]}}';
-        }
-
-        startRoll(rollString, (roll) => finishRoll(roll.rollId, { Roll: roll.results.Roll.result }));
-    };
-
-    const rollDice = (params = {
-        count: 1,
-        exploding: false,
-    }) => {
-        const { count, exploding } = params;
-        const notation = `${count}d6${exploding ? '!' : ''}`;
-
-        let rollString = `&{template:dice} {{name=${notation.toUpperCase()}}} {{Roll=[[${notation}]]}}`;
-
-        startRoll(rollString, (roll) => {
-            const Roll = roll.results.Roll.dice.sort((a, b) => (b - a));
-            finishRoll(roll.rollId, { Roll })
-        });
-    };
-
-    const rollMagick = () => {
-        const notation = `${rqMagick}d6!`;
-
-        startRoll(
-            `&{template:dice} {{name=Magick: PowerLevel: ${rqMagick}}} {{Roll=[[${rqMagick}d6!]]}}`,
-            (roll) => {
-                const Roll = roll.results.Roll.dice.sort((a, b) => (b - a));
-                finishRoll(roll.rollId, { Roll })
-            }
-        );
-    };
-
-    const rollMiracle = () => {
-        const notation = `${rqMagick}d6!`;
-
-        startRoll(
-            `&{template:dice} {{name=Miracle: ${rqMiracle}}} {{Roll=[[${rqMiracle}d6!]]}}`,
-            (roll) => {
-                const Roll = roll.results.Roll.dice.sort((a, b) => (b - a));
-                finishRoll(roll.rollId, { Roll })
-            }
-        );
-    };
-
     $20('button.dice-roll').on('click', (evt) => {
-        const { altKey, ctrlKey, metaKey, shiftKey } = evt;
-
         let {
-            'data-type': type,
-            'data-boons': dataBoons,
-            'data-banes': dataBanes,
-            'data-count': dataCount,
-            'data-exploding': dataExploding,
+            'data-count': sides,
+            'data-explode': explode,
         } = evt.htmlAttributes;
 
-        dataBoons = parseInt(dataBoons);
-        if (isNaN(dataBoons)) dataBoons = 0;
+        explode = explode === 'true' ? true : false;
+        
+        const notation = [];
 
-        dataBanes = parseInt(dataBanes);
-        if (isNaN(dataBanes)) dataBanes = 0;
-
-        const boons = dataBoons;
-        const banes = dataBanes;
-
-        let rollString
-
-        switch (type) {
-            case 'action':
-                rollAction({ banes, boons, shiftKey });
-                break;
-            case 'attack':
-                rollAttack({ banes, boons, shiftKey });
-                break;
-            case 'magick':
-                rollMagick();
-                break;
-            case 'miracle':
-                rollMiracle();
-                break;
-            default:
-                dataCount = parseInt(dataCount);
-                if (isNaN(dataCount)) dataCount = 1;
-
-                const exploding = (dataExploding === 'true') ? true : false;
-
-                rollDice({ count: dataCount, exploding })
-                break;
+        for (let i = 0; i < sides; i++) {
+            notation.push(`{{roll${i}=[[1d6${explode ? '!' : ''}]]}} {{expl${i}=[[0]]}}`);
         }
+
+        const rollString = `&{template:dice${explode ? '-explode' : ''}} {{name=@{character_name}: ${sides}D6${explode ? '!' : ''}}} ${notation.join(' ')}`;
+
+        startRoll(rollString, (roll) => {
+            const results = {};
+
+            for (const resultKey in roll.results) {
+                if (resultKey.startsWith('roll')) {
+                    const explKey = `expl${resultKey.slice(4)}`;
+
+                    if (roll.results[resultKey].dice.length > 1) {
+                        results[resultKey] = roll.results[resultKey].dice.shift();
+                        results[explKey] = roll.results[resultKey].dice;
+                    } else {
+                        results[resultKey] = roll.results[resultKey].dice;
+                    }
+                }
+            }
+            
+            finishRoll(roll.rollId, results);
+        });
     });
 
     on('sheet:opened', () => {
