@@ -102,22 +102,20 @@
     margin-top: 4px;
 }
 
-.sheet-flex-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-}
-
 .sheet-flex-col {
     display: flex;
     flex-direction: column;
 }
 
-.sheet-input-field {
+.sheet-flex-row {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.sheet-flex-row>input {
+    min-width: 250px;
+    margin: 0 !important;
 }
 
 label {
@@ -133,11 +131,6 @@ select {
 span.pictos-icon {
     font-family: 'Pictos';
     font-size: 2rem;
-}
-
-.sheet-input-field>input {
-    min-width: 200px;
-    margin: 0 !important;
 }
 
 .sheet-flex-row.sheet-flex-centered {
